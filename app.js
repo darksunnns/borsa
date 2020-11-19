@@ -12,7 +12,7 @@ app.get('/',function(req,res){
 fs.readFile('index.html',function(err,data){
 
     res.write(data);
-    res.write('SENİN NEYİN VAR');
+    res.write('iyi geceler :D');
     res.end('mesaj bitti');
 
 

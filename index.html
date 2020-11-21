@@ -3,18 +3,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>A Multiplayer Game</title>
-   <canvas id="cnTuval" width="200" height="200" style="border:1px solid red">
+   <canvas id="cnTuval" width="500" height="height" style="border:1px solid red">
 Tarayıcınız HTML5 desteklemiyor
 </canvas><br/>
 <input type="button" value="Çiz" onclick="ciz()" />
   </head>
   <body>
+  
  <h1>welcome mola verdim ♥♥♥♥ ♥♥ ♥♥  </h1>
     <script>
- 
+var width= window.innerWidth;
+var height=window.innerHeight; 
 function ciz() {
  
     var tuval = document.getElementById("cnTuval");
+	tuval.width=window.innerWidth-80;
+	tuval.height=window.innerHeight-80;
     var ctx = tuval.getContext("2d");
     // Bundan sonra çizimlerimizi yapabiliriz.
  

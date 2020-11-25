@@ -3,40 +3,44 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>A Multiplayer Game</title>
-   <canvas id="cnTuval" width="500" height="height" style="border:1px solid red">
+	<h1 style="text-align:center ">welcome mola verdim ♥♥♥♥ ♥♥ ♥♥  </h1>
+   <canvas id="cnTuval"  width="100px" height="100px" style="border:1px solid red">
 Tarayıcınız HTML5 desteklemiyor
 </canvas><br/>
 <input type="button" value="Çiz" onclick="ciz()" />
   </head>
   <body>
   
- <h1>welcome mola verdim ♥♥♥♥ ♥♥ ♥♥  </h1>
+  </div>
+ 
     <script>
-var width= window.innerWidth;
-var height=window.innerHeight; 
-	    
-	    
-    var tuval = document.getElementById("cnTuval");
-	tuval.width=window.innerWidth-80;
-	tuval.height=window.innerHeight-80;
+var width= window.innerWidth-30;
+alert(width);
+var height=window.innerHeight-30;
+alert(height); 
+var tuval = document.getElementById("cnTuval");
+	tuval.width =width;
+	tuval.height =height;
     var ctx = tuval.getContext("2d");
     // Bundan sonra çizimlerimizi yapabiliriz.
-	    
+
+
 function ciz() {
  
-	
-	  ctx.fillStyle = "#FF0000";  // dolgu rengi tanımlama
+    
+  ctx.fillStyle = "#FF0000";  // dolgu rengi tanımlama
 
-  ctx.fillRect(width/2,height/2-100,100,100); //canvasın 0,0 konumuna 150px genişlikte, 75px yükseklikte dikdörtgen çizer.
+  ctx.fillRect(width/2,height/2-100, width/13,width/13); //canvasın 0,0 konumuna 150px genişlikte, 75px yükseklikte dikdörtgen çizer.
  
  ctx.fillStyle = "#FF0000";  // dolgu rengi tanımlama
 
-  ctx.fillRect(width/2-300,height/2-100,100,100); //canvasın 0,0 konumuna 150px genişlikte, 75px yükseklikte dikdörtgen çizer.
+  ctx.fillRect(width/2-width/6, height/2-100 , width/13 , width/13); //canvasın 0,0 konumuna 150px genişlikte, 75px yükseklikte dikdörtgen çizer.
     
   
  
  
 }
+ciz();
  
 </script>
   </body>

@@ -17,15 +17,50 @@ Tarayıcınız HTML5 desteklemiyor
     <script>
 
     // Bundan sonra çizimlerimizi yapabiliriz.
+    myFunction();
 
-    var width= window.innerWidth-30;
-alert(width);
-var height=window.innerHeight;
-alert(height); 
-var tuval = document.getElementById("cnTuval");
-	tuval.width =width;
+    window.addEventListener("resize",myFunction);
+    function myFunction() {
+
+    var tuval = document.getElementById("cnTuval");
+
+
+
+   var width= window.innerWidth-30;
+    
+//alert(width);
+
+     var height=window.innerHeight;
+    
+//alert(height);
+
+tuval.width =width;
 	tuval.height =height;
-    var ctx = tuval.getContext("2d");
+
+   
+	
+    
+
+
+ 
+
+ 
+
+
+
+  
+  
+  
+  
+  var ctx = tuval.getContext("2d");
+
+
+
+
+
+
+
+
     
 
     var bank = new Image(); 
@@ -45,10 +80,7 @@ var tuval = document.getElementById("cnTuval");
     // Create new img element
 
 
-
-
-    
-    window.onload = function ciz() {
+  
 
 
       ctx.fillStyle = "green";
@@ -92,7 +124,7 @@ ctx.fillRect(width-200,58, 190,200);
   ctx.drawImage(hisseuc, width-190, 170,60,80);
   ctx.drawImage(hissedort, width-100, 170,60,80);
 
-  ctx.drawImage(bm, width-100, 10,25,25);
+  ctx.drawImage(bm, width-410, height/2+50,25,25);
   ctx.drawImage(db, width-50, 10,25,25);
   ctx.drawImage(ibm, width-200, 10,25,25);
   ctx.drawImage(wosk, width-300, 10,25,25);
@@ -116,6 +148,13 @@ ctx.fillRect(width-200,58, 190,200);
   ctx.drawImage(kapalikart, width-width+900,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
 //alttakiler acik kart resmi alanı
 ctx.drawImage(acikkart, width-width+900,height-250,width/parseFloat(17.81),width/parseFloat(13.36));
+
+
+
+
+
+
+
 
 
 }, false);
@@ -153,8 +192,8 @@ ctx.fillRect(0,0, width,height/parseFloat(12.58));
 */
  
  
-}
 
+}
  
 </script>
   </body>

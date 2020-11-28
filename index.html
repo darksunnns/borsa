@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>A Multiplayer Game</title>
-	
+    
    <canvas id="cnTuval"  width="100px" height="100px" style="border:1px solid red" bg-color ="#CC3BB">
 Tarayıcınız HTML5 desteklemiyor
 </canvas><br/>
@@ -18,25 +18,129 @@ Tarayıcınız HTML5 desteklemiyor
 
     // Bundan sonra çizimlerimizi yapabiliriz.
 
-    
-    window.onload = function ciz() {
- 
-      var width= window.innerWidth-30;
+    var width= window.innerWidth-30;
 alert(width);
-var height=window.innerHeight-30;
+var height=window.innerHeight;
 alert(height); 
 var tuval = document.getElementById("cnTuval");
 	tuval.width =width;
 	tuval.height =height;
     var ctx = tuval.getContext("2d");
-    console.log(window.innerWidth);
+    
+
+    var bank = new Image(); 
+    var menu = new Image();
+    var kapalikart = new Image();
+    var puandurumu = new Image();
+    var profilresmi = new Image();
+    var hissebir = new Image();
+    var hisseiki = new Image();
+    var hisseuc = new Image();
+    var hissedort = new Image();
+    var acikkart = new Image();
+    var bm = new Image();
+    var db = new Image();
+    var ibm = new Image();
+    var wosk = new Image();
+    // Create new img element
+
+
+
+
+    
+    window.onload = function ciz() {
+
+
+      ctx.fillStyle = "green";
+ctx.fillRect(0,0, width,height);
+
+//Turn transparency on
+ctx.globalAlpha = 0.3;
+ctx.fillStyle = "black"; 
+ctx.fillRect(0,0, width,height/parseFloat(12.58)); 
+ctx.fillStyle = "black"; 
+ctx.fillRect(width-200,58, 190,200); 
+
+
+// ctx.fillRect(width/2-width/6, height/2-width/13 , width/13 , width/13); //canvasın 0,0 konumuna 150px genişlikte, 75px yükseklikte dikdörtgen çizer.
+    
+
+
+
+
+ ctx.globalAlpha = 1;
+      kapalikart.src = 'public/kapalikart.png';
+      acikkart.src = 'public/acikkart.png'; 
+      puandurumu.src = 'public/puandurumu.png';
+      profilresmi.src = 'public/profilresmi.png'; 
+      hissebir.src = 'public/hissebir.png';   
+      hisseiki.src = 'public/hisseiki.png';
+      hisseuc.src = 'public/hisseuc.png';
+      hissedort.src = 'public/hissedort.png';     
+      bm.src = 'public/bm.png';
+      db.src = 'public/db.png';
+      ibm.src = 'public/ibm.png';
+      wosk.src = 'public/wosk.png';                        
+      menu.src = 'public/menu.png';
+      bank.src = 'public/bank.png'; // Set source path
+      bank.addEventListener('load', function() {
+  // execute drawImage statements here
+  ctx.drawImage(bank,width-50, 5,40,40);
+  ctx.drawImage(menu, 10, 5,40,40);
+  ctx.drawImage(hissebir, width-190, 65,60,80);
+  ctx.drawImage(hisseiki, width-100, 65,60,80);
+  ctx.drawImage(hisseuc, width-190, 170,60,80);
+  ctx.drawImage(hissedort, width-100, 170,60,80);
+
+  ctx.drawImage(bm, width-100, 10,25,25);
+  ctx.drawImage(db, width-50, 10,25,25);
+  ctx.drawImage(ibm, width-200, 10,25,25);
+  ctx.drawImage(wosk, width-300, 10,25,25);
+
+
+  ctx.drawImage(puandurumu, width/2-150,height/2-50,300,100);
+  ctx.drawImage(profilresmi, width-410,height/2-50,100,100);
+  ctx.drawImage(profilresmi, width-width +310,height/2-50,100,100);
+  ctx.drawImage(profilresmi, width/2+50,height-220,100,100);
+  ctx.drawImage(profilresmi, width/2+50,height-height+100,100,100);
+  ctx.drawImage(profilresmi, width/2-150,height-height+100,100,100);
+  ctx.drawImage(profilresmi, width/2-150,height-220,100,100);
+// alttakiler kapalı kart resmi alanı
+  ctx.drawImage(kapalikart, width-width+200,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+300,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+400,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+500,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+600,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+700,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+800,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+900,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+//alttakiler acik kart resmi alanı
+ctx.drawImage(acikkart, width-width+900,height-250,width/parseFloat(17.81),width/parseFloat(13.36));
+
+
+}, false);
+     
+      
+        // Üstteki resmin referansını al.
+       // var resim = document.getElementById("imgKaynak");
+ 
+        // Resmi x=15, y=15 konumuna çiz.
+       
+      
+ 
+
+
+
+    
  // ctx.fillStyle = "red";  // dolgu rengi tanımlama
 
  // ctx.fillRect(width/2-width/4,height/2-height/parseFloat(3.8), width/2,height/parseFloat(1.9)); //canvasın 0,0 konumuna 150px genişlikte, 75px yükseklikte dikdörtgen çizer.
  
 //  ctx.fillRect(0,0, width,height/8); //canvasın 0,0 konumuna 150px genişlikte, 75px yükseklikte dikdörtgen çizer.
  //ctx.fillStyle = "rgba(0, 0, 200, 0.5)"; // dolgu rengi tanımlama
+
  
+ /*
 ctx.fillStyle = "green";
 ctx.fillRect(0,0, width,height);
 
@@ -46,7 +150,7 @@ ctx.fillStyle = "black";
 ctx.fillRect(0,0, width,height/parseFloat(12.58)); 
  // ctx.fillRect(width/2-width/6, height/2-width/13 , width/13 , width/13); //canvasın 0,0 konumuna 150px genişlikte, 75px yükseklikte dikdörtgen çizer.
     
-  
+*/
  
  
 }

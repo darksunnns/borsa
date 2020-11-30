@@ -129,22 +129,29 @@ y=canvas.width/parseFloat(2.04);
   //ctx.drawImage(ibm, width-200, 10,25,25);
   //ctx.drawImage(wosk, width-300, 10,25,25);
 
-if(canvas.width<=612){
+if(canvas.width<=612 ) {
 
 x=canvas.width/parseFloat(6.12)
 y=canvas.width/parseFloat(4.08);
 alert("x degeri"+x);
 }
+else if(canvas.height<=612){
+  alert("dar ekran");
+  x=canvas.height/parseFloat(6.12)
+  y=canvas.height/parseFloat(4.08); 
+  
+
+}
 
 
-   ctx.drawImage(puandurumu, canvas.width/2-y,canvas.height/2-x/2,y*2,parseFloat(x));
+   ctx.drawImage(puandurumu, canvas.width/2-y,canvas.height/2-x/2,y*2,x);
    ctx.drawImage(profilresmi, canvas.width-x-10,canvas.height/2-x/2,x,x);
    ctx.drawImage(profilresmi, canvas.width-canvas.width+10,canvas.height/2-x/2,x,x);
 
-  ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-220,x,x);
-  ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-canvas.height+100,x,x);
-  ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-canvas.height+100,x,x);
-  ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-220,x,x);
+  ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-x-x,x,x);
+  ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-canvas.height+x,x,x);
+  ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-canvas.height+x,x,x);
+  ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-x-x,x,x);
 
 // alttakiler kapalı kart resmi alanı
  // ctx.drawImage(kapalikart, width-width+10,height-110,width/parseFloat(17.81),width/parseFloat(13.36));

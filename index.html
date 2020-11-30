@@ -1,84 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>A Multiplayer Game</title>
     
-   <canvas id="cnTuval"  width="100px" height="100px" bg-color ="#CC3BB">
-Tarayıcınız HTML5 desteklemiyor
-</canvas><br/>
+    <title>A Multiplayer Game</title>
+    <canvas id="canvas"  width="100px" height="100px">
+      Tarayıcınız HTML5 desteklemiyor
+      </canvas><br/>
+      
 <input type="button" value="Çiz" onclick="ciz()" />
-<h1 style="text-align:center ">mola verdim ♥♥♥♥ ♥♥ ♥♥  </h1>
-	  <style>
-		  * { margin:0; padding:0; } /* to remove the top and left whitespace */
+<h1 style="text-align:center ">welcome mola verdim ♥♥♥♥ ♥♥ ♥♥  </h1>
+
+
+    <style>
+   
+    * { margin:0; padding:0; } /* to remove the top and left whitespace */
 
 html, body { width:100%; height:100%;  overflow: hidden; } /* just to be sure these are full screen*/
 
-canvas { display:block; } /* To remove the scrollbars */
+  canvas { display:block; } /* To remove the scrollbars */
 
-	  </style>
+
+/* to show the canvas bounds */
+
+      </style>
+    
+
+    <div>The canvas is the gray background color you see here. It will resize when you resize the browser, making it always fullscreen.</div>
+
+  
+
+
   </head>
   <body>
   
- 
+  </div>
  
     <script>
-
-    // Bundan sonra çizimlerimizi yapabiliriz.
-    myFunction();
-
-    window.addEventListener("resize",myFunction);
-    function myFunction() {
-
-    var tuval = document.getElementById("cnTuval");
-
-
-
-   var width= window.innerWidth;
+(function() {
+        var canvas = document.getElementById('canvas'),
+                ctx = canvas.getContext('2d');
     
-alert(width);
-
-     var height=window.innerHeight;
-     var x =100; 
-     var y =300;
-    
-alert(height);
-
-tuval.width =width;
-	tuval.height =height;
-
-   
-	
-    if(width<=612){
-
-x=width/parseFloat(6.12);
-y=width/parseFloat(2.04);
-}
-
-
-
- 
-
- 
-
-
-
-  
-  
-  
-  
-  var ctx = tuval.getContext("2d");
-
-
-
-
-
-
-
-
-    
-
+        // Create new img element
     var bank = new Image(); 
     var menu = new Image();
     var kapalikart = new Image();
@@ -93,7 +57,192 @@ y=width/parseFloat(2.04);
     var db = new Image();
     var ibm = new Image();
     var wosk = new Image();
+
+
+    var x=100;
+    var y=150;
+        
+
+
+
+
+ 
+    kapalikart.src = 'public/kapalikart.png';
+      acikkart.src = 'public/acikkart.png'; 
+      puandurumu.src = 'public/puandurumu.png';
+      profilresmi.src = 'public/profilresmi.png'; 
+      hissebir.src = 'public/hissebir.png';   
+      hisseiki.src = 'public/hisseiki.png';
+      hisseuc.src = 'public/hisseuc.png';
+      hissedort.src = 'public/hissedort.png';     
+      bm.src = 'public/bm.png';
+      db.src = 'public/db.png';
+      ibm.src = 'public/ibm.png';
+      wosk.src = 'public/wosk.png';                        
+      menu.src = 'public/menu.png';
+     bank.src = 'public/bank.png';
+     
+             
+     
+        // resize the canvas to fill browser window dynamically
+        window.addEventListener('resize', resizeCanvas, false);
+        
+        function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+             
+               alert(canvas.width);
+               
+               
+               alert(canvas.height); 
+ 
+ 
+               if(canvas.width<=612){
+
+x=canvas.width/parseFloat(6.12);
+y=canvas.width/parseFloat(2.04);
+}
+
+           
+
+
+
+                /**
+                 * Your drawings need to be inside this function otherwise they will be reset when 
+                 * you resize the browser window and the canvas goes will be cleared.
+                 */
+
+                 ctx.fillStyle = "green";
+                ctx.fillRect(0,0, canvas.width,canvas.height);
+                bank.addEventListener('load', function() {
+
+  // execute drawImage statements here
+  ctx.drawImage(bank,canvas.width-60, 5,40,40);
+  ctx.drawImage(menu, 10, 5,40,40);
+ // ctx.drawImage(hissebir, width-190, 65,60,80);
+  //ctx.drawImage(hisseiki, width-100, 65,60,80);
+  //ctx.drawImage(hisseuc, width-190, 170,60,80);
+  //ctx.drawImage(hissedort, width-100, 170,60,80);
+
+ // ctx.drawImage(bm, width-410, height/2+50,25,25);
+  //ctx.drawImage(db, width-100, 10,25,25);
+  //ctx.drawImage(ibm, width-200, 10,25,25);
+  //ctx.drawImage(wosk, width-300, 10,25,25);
+
+if(canvas.width<=612){
+
+x=canvas.width/parseFloat(6.12)
+y=canvas.width/parseFloat(4.08);
+alert("x degeri"+x);
+}
+
+
+   ctx.drawImage(puandurumu, canvas.width/2-y,canvas.height/2-50,y*2,parseFloat(x));
+   ctx.drawImage(profilresmi, canvas.width-x-10,canvas.height/2-50,x,x);
+   ctx.drawImage(profilresmi, canvas.width-canvas.width +10,canvas.height/2-50,x,x);
+   ctx.drawImage(profilresmi, canvas.width/2+50,canvas.height-220,100,100);
+  ctx.drawImage(profilresmi, canvas.width/2+50,canvas.height-canvas.height+100,100,100);
+  ctx.drawImage(profilresmi, canvas.width/2-150,canvas.height-canvas.height+100,100,100);
+  ctx.drawImage(profilresmi, canvas.width/2-150,canvas.height-220,100,100);
+
+// alttakiler kapalı kart resmi alanı
+ // ctx.drawImage(kapalikart, width-width+10,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+ // ctx.drawImage(kapalikart, width-width+300,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+ // ctx.drawImage(kapalikart, width-width+400,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+ // ctx.drawImage(kapalikart, width-width+500,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+ // ctx.drawImage(kapalikart, width-width+600,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+ // ctx.drawImage(kapalikart, width-width+700,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+//  ctx.drawImage(kapalikart, width-width+800,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+ // ctx.drawImage(kapalikart, width-width+900,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+//alttakiler acik kart resmi alanı
+//ctx.drawImage(acikkart, width-width+900,height-250,width/parseFloat(17.81),width/parseFloat(13.36));
+
+
+}, false);
+
+                drawStuff(); 
+        }
+        resizeCanvas();
+        
+        function drawStuff() {
+                // do your drawing stuff here
+        }
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+    // Bundan sonra çizimlerimizi yapabiliriz.
+    myFunction();
+
+    window.addEventListener("resize",myFunction);
+    function myFunction() {
+
+    var tuval = document.getElementById("cnTuval");
+
+
+
+   var width= window.innerWidth-30;
+    
+//alert(width);
+
+     var height=window.innerHeight;
+    
+//alert(height);
+
+tuval.width =width;
+	tuval.height =height;
+  
+  var ctx = tuval.getContext("2d");
+
+
+
+
+
+
+
+
+    
     // Create new img element
+    var menu = new Image();
+    var kapalikart = new Image();
+    var puandurumu = new Image();
+    var profilresmi = new Image();
+    var hissebir = new Image();
+    var hisseiki = new Image();
+    var hisseuc = new Image();
+    var hissedort = new Image();
+    var acikkart = new Image();
+    var bm = new Image();
+    var db = new Image();
+    var ibm = new Image();
+    var wosk = new Image();
+   
 
 
   
@@ -145,20 +294,17 @@ ctx.fillRect(width-200,58, 190,200);
   ctx.drawImage(ibm, width-200, 10,25,25);
   ctx.drawImage(wosk, width-300, 10,25,25);
 
-	      
-	   // burada çalışıyorsun   
-	      
-	      
-	      
-  ctx.drawImage(puandurumu, width/2-y,height/2-50,y,x);
-  ctx.drawImage(profilresmi, (width-x)+10,height/2-50,x,x);
-  ctx.drawImage(profilresmi, width-width +10,height/2-50,x,x);
-  //ctx.drawImage(profilresmi, width/2+50,height-220,100,100);
-  //ctx.drawImage(profilresmi, width/2+50,height-height+100,100,100);
-  //ctx.drawImage(profilresmi, width/2-150,height-height+100,100,100);
-  //ctx.drawImage(profilresmi, width/2-150,height-220,100,100);
+
+  ctx.drawImage(puandurumu, width/2-150,height/2-50,300,100);
+  ctx.drawImage(profilresmi, width-410,height/2-50,100,100);
+  ctx.drawImage(profilresmi, width-width +310,height/2-50,100,100);
+  ctx.drawImage(profilresmi, width/2+50,height-220,100,100);
+  ctx.drawImage(profilresmi, width/2+50,height-height+100,100,100);
+  ctx.drawImage(profilresmi, width/2-150,height-height+100,100,100);
+  ctx.drawImage(profilresmi, width/2-150,height-220,100,100);
+
 // alttakiler kapalı kart resmi alanı
-  ctx.drawImage(kapalikart, width-width+200,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+10,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
   ctx.drawImage(kapalikart, width-width+300,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
   ctx.drawImage(kapalikart, width-width+400,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
   ctx.drawImage(kapalikart, width-width+500,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
@@ -171,14 +317,12 @@ ctx.drawImage(acikkart, width-width+900,height-250,width/parseFloat(17.81),width
 
 
 
-
-
-
-
-
-
 }, false);
-     
+
+*/
+
+
+
       
         // Üstteki resmin referansını al.
        // var resim = document.getElementById("imgKaynak");
@@ -213,7 +357,7 @@ ctx.fillRect(0,0, width,height/parseFloat(12.58));
  
  
 
-}
+//}
  
 </script>
   </body>

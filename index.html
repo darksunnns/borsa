@@ -137,13 +137,14 @@ alert("x degeri"+x);
 }
 
 
-   ctx.drawImage(puandurumu, canvas.width/2-y,canvas.height/2-50,y*2,parseFloat(x));
-   ctx.drawImage(profilresmi, canvas.width-x-10,canvas.height/2-50,x,x);
-   ctx.drawImage(profilresmi, canvas.width-canvas.width +10,canvas.height/2-50,x,x);
-   ctx.drawImage(profilresmi, canvas.width/2+50,canvas.height-220,100,100);
-  ctx.drawImage(profilresmi, canvas.width/2+50,canvas.height-canvas.height+100,100,100);
-  ctx.drawImage(profilresmi, canvas.width/2-150,canvas.height-canvas.height+100,100,100);
-  ctx.drawImage(profilresmi, canvas.width/2-150,canvas.height-220,100,100);
+   ctx.drawImage(puandurumu, canvas.width/2-y,canvas.height/2-x/2,y*2,parseFloat(x));
+   ctx.drawImage(profilresmi, canvas.width-x-10,canvas.height/2-x/2,x,x);
+   ctx.drawImage(profilresmi, canvas.width-canvas.width+10,canvas.height/2-x/2,x,x);
+
+  ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-220,x,x);
+  ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-canvas.height+100,x,x);
+  ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-canvas.height+100,x,x);
+  ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-220,x,x);
 
 // alttakiler kapalı kart resmi alanı
  // ctx.drawImage(kapalikart, width-width+10,height-110,width/parseFloat(17.81),width/parseFloat(13.36));

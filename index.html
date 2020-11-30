@@ -32,6 +32,8 @@ Tarayıcınız HTML5 desteklemiyor
 alert(width);
 
      var height=window.innerHeight;
+     var x =100; 
+     var y =300;
     
 alert(height);
 
@@ -129,11 +131,15 @@ ctx.fillRect(width-200,58, 190,200);
   ctx.drawImage(db, width-50, 10,25,25);
   ctx.drawImage(ibm, width-200, 10,25,25);
   ctx.drawImage(wosk, width-300, 10,25,25);
+if(width<=612){
+alert("hello");
+x=width/parseFloat(6.12)
+y=width/parseFloat(2.7);
+}
 
-
-  ctx.drawImage(puandurumu, width/2-150,height/2-50,300,100);
-  ctx.drawImage(profilresmi, width-120,height/2-50,100,100);
-  ctx.drawImage(profilresmi, width-width +10,height/2-50,100,100);
+  ctx.drawImage(puandurumu, width/2-150,height/2-50,y,x);
+  ctx.drawImage(profilresmi, width-120,height/2-50,x,x);
+  ctx.drawImage(profilresmi, width-width +10,height/2-50,x,x);
   //ctx.drawImage(profilresmi, width/2+50,height-220,100,100);
   //ctx.drawImage(profilresmi, width/2+50,height-height+100,100,100);
   //ctx.drawImage(profilresmi, width/2-150,height-height+100,100,100);

@@ -144,18 +144,28 @@ else if(canvas.height<=612){
 }
 
 
-   ctx.drawImage(puandurumu, canvas.width/2-y,canvas.height/2-x/2-50,y*2,x);
-   ctx.drawImage(profilresmi, canvas.width-x-10,canvas.height/2-x/2-50,x,x);
-   ctx.drawImage(profilresmi, canvas.width-canvas.width+10,canvas.height/2-x/2-50,x,x);
+   ctx.drawImage(puandurumu, canvas.width/2-y,canvas.height/2-x/2-80,y*2,x);
+   ctx.drawImage(profilresmi, canvas.width-x-10,canvas.height/2-x/2-80,x,x);
+   ctx.drawImage(profilresmi, canvas.width-canvas.width+10,canvas.height/2-x/2-80,x,x);
 
-  ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-x-x-50,x,x);
-  ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-canvas.height+x-50,x,x);
-  ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-canvas.height+x-50,x,x);
-  ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-x-x-50,x,x);
+  ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-3*x,x,x);
+  ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-canvas.height+x-60,x,x);
+  ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-canvas.height+x-60,x,x);
+  ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-3*x,x,x);
 
 // alttakiler kapalı kart resmi alanı
- // ctx.drawImage(kapalikart, width-width+10,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
- // ctx.drawImage(kapalikart, width-width+300,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, canvas.width-canvas.width/2+10,canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+  ctx.drawImage(kapalikart, canvas.width-canvas.width/2-x/parseFloat(1.4),canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+  ctx.drawImage(kapalikart, canvas.width-canvas.width/2-2*x/parseFloat(1.4)-10,canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+  ctx.drawImage(kapalikart, canvas.width-canvas.width/2-3*x/parseFloat(1.4)-20,canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+  ctx.drawImage(kapalikart, canvas.width-canvas.width/2-4*x/parseFloat(1.4)-30,canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+  ctx.drawImage(kapalikart, canvas.width-canvas.width/2+x/parseFloat(1.4)+20,canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+  ctx.drawImage(kapalikart, canvas.width-canvas.width/2+2*x/parseFloat(1.4)+30,canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+  ctx.drawImage(kapalikart, canvas.width-canvas.width/2+3*x/parseFloat(1.4)+40,canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+ 
+  //ctx.drawImage(kapalikart, canvas.width-canvas.width/2-x-10,canvas.height-y-10,x,y);
+  //ctx.drawImage(kapalikart, canvas.width-canvas.width/2+x+30,canvas.height-y-10,x,y);
+  //ctx.drawImage(kapalikart, canvas.width-canvas.width+300,canvas.height-160,canvas.width/parseFloat(13.66),canvas.width/parseFloat(9.10));
  // ctx.drawImage(kapalikart, width-width+400,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
  // ctx.drawImage(kapalikart, width-width+500,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
  // ctx.drawImage(kapalikart, width-width+600,height-110,width/parseFloat(17.81),width/parseFloat(13.36));

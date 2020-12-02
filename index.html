@@ -9,11 +9,17 @@
      
     </div>
 
+    <div class="kutu" id="kuturesim" onclick="ciz()">
+
+
+
+    </div>
+
 
     <canvas id="canvas">
       </canvas>
       
-<input type="button" value="Çiz" onclick="ciz()" />
+<input type="button" value="Çiz" />
 <h1 style="text-align:center ">welcome mola verdim ♥♥♥♥ ♥♥ ♥♥  </h1>
 
 
@@ -26,15 +32,28 @@ html, body { width:100%; height:100%;  overflow: hidden; } /* just to be sure th
   canvas { display:block; } /* To remove the scrollbars */
 
   div {
-  
    position: absolute;
-   top: 20px;
+   text-align: center;
+   top: 200px;
    left: 200px;
-   width: 100px;
-   height:100px ;
+   width: 50px;
+   height:20px ;
    border: 1px solid black;
    overflow:hidden; 
 }
+
+.kutu{
+
+  position: absolute;
+   
+   width: 100px;
+   height:150px ;
+   background-image: url('public/kapalikart.png');
+   background-size: 100% 100%;
+   border: 1px solid black;
+
+}
+
 
 
 
@@ -55,14 +74,32 @@ html, body { width:100%; height:100%;  overflow: hidden; } /* just to be sure th
     <script>
 
 
-var genislik=window.innerWidth;
+    var genislik=window.innerWidth;
     var yükseklik=window.innerHeight;
    
 
 
+    document.querySelector('.kutu').style.left= genislik-genislik/2+3+'px';
+          document.querySelector('.kutu').style.top= yükseklik-150/parseFloat(1.36)-10+'px';
+          document.querySelector('.kutu').style.width= parseFloat(71.42)+'px';
+          document.querySelector('.kutu').style.height= parseFloat(110.29)+'px';
+
+         
+        function ciz(){
+ alert("oldu");
+
+        };
+
+
+
+
+
         window.onload = function(){ start();
-          document.querySelector('div').style.left= genislik-102+'px';
+          document.querySelector('div').style.left= genislik-68+'px';
           document.querySelector('div').style.top= 41+'px';
+         //yukarıdaki kutu divinin ilk değerleri eğer onload içinde olursa 
+         //ekran yenilendinde tekrar eski boyutlarına döner
+         
         };
 function start () {
         var canvas = document.getElementById('canvas'),
@@ -118,25 +155,12 @@ function start () {
 
         function resizeCanvas() {
 
-         // var text ;  
-          text = document.getElementById('mytext').innerText=canvas.width+"and"+canvas.height;
-                 text =document.getElementById('mytext').id;
-               text= document.getElementById('mytext').className;
-              // text.style.top=500+"px";
-              document.querySelector('div').style.color='black';
-              document.querySelector('div').style.fontSize='20px';
-              document.querySelector('div').style.fontWeight='bold';
-              document.querySelector('div').style.left= canvas.width-100 +'px';
-              document.querySelector('div').style.top= 41+'px';
-       console.log (document.querySelector('div').style);
-        
-
-          
-              
-                canvas.width = window.innerWidth;;
-                canvas.height = window.innerHeight;
+          canvas.width = window.innerWidth;;
+          canvas.height = window.innerHeight;
                
 
+               
+    
               
               
 
@@ -153,6 +177,41 @@ x=canvas.width/parseFloat(6.12);
 y=canvas.width/parseFloat(2.04);
 }
 
+if(canvas.width<=612 ) {
+
+x=canvas.width/parseFloat(6.12)
+y=canvas.width/parseFloat(4.08);
+//alert("x degeri"+x);
+}
+else if(canvas.height<=612){
+  //alert("dar ekran");
+  x=canvas.height/parseFloat(6.12)
+  y=canvas.height/parseFloat(4.08); 
+  
+
+}
+
+//bu bloğun üstü
+            
+         // var text ;  
+         text =document.getElementById('mytext').id;
+               text= document.getElementById('mytext').className;
+              // text.style.top=500+"px";
+              document.querySelector('div').style.color='black';
+              document.querySelector('div').style.fontSize='20px';
+              document.querySelector('div').style.fontWeight='bold';
+              document.querySelector('div').style.left= canvas.width-100 +'px';
+              document.querySelector('div').style.top= 41+'px';
+
+              document.querySelector('.kutu').style.left= canvas.width-canvas.width/2+3+'px';
+              document.querySelector('.kutu').style.top= canvas.height-y/parseFloat(1.36)-10+'px';
+              document.querySelector('.kutu').style.width= x/parseFloat(1.4)+'px';
+              document.querySelector('.kutu').style.height= y/parseFloat(1.36)+'px';
+     //bu kod bloğunun en altı  
+
+          
+
+
            
 
 
@@ -167,6 +226,7 @@ y=canvas.width/parseFloat(2.04);
 
 
                 bank.addEventListener('load', function() {
+               
                   ctx.fillStyle = "green";
                 ctx.fillRect(0,0, canvas.width,canvas.height);
                 
@@ -185,19 +245,21 @@ y=canvas.width/parseFloat(2.04);
   //ctx.drawImage(ibm, width-200, 10,25,25);
   //ctx.drawImage(wosk, width-300, 10,25,25);
 
-if(canvas.width<=612 ) {
 
-x=canvas.width/parseFloat(6.12)
-y=canvas.width/parseFloat(4.08);
-//alert("x degeri"+x);
-}
-else if(canvas.height<=612){
-  //alert("dar ekran");
-  x=canvas.height/parseFloat(6.12)
-  y=canvas.height/parseFloat(4.08); 
+
+
   
+              
 
-}
+
+
+
+
+
+
+
+
+
 
 
    ctx.drawImage(puandurumu, canvas.width/2-y,canvas.height/2-x,y*2,x);
@@ -210,7 +272,7 @@ else if(canvas.height<=612){
   ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-3*x+x/2,x,x);
 
 // alttakiler kapalı kart resmi alanı
-  ctx.drawImage(kapalikart, canvas.width-canvas.width/2+3,canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+  //ctx.drawImage(kapalikart, canvas.width-canvas.width/2+3,canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
   ctx.drawImage(kapalikart, canvas.width-canvas.width/2-x/parseFloat(1.4),canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
   ctx.drawImage(kapalikart, canvas.width-canvas.width/2-2*x/parseFloat(1.4)-3,canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
   ctx.drawImage(kapalikart, canvas.width-canvas.width/2-3*x/parseFloat(1.4)-6,canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));

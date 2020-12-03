@@ -5,15 +5,60 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     
     <title>A Multiplayer Game</title>
-    <div id="mytext">mytest
-     
-    </div>
-
-    <div class="kutu" id="kuturesim" onclick="ciz()">
+    
 
 
 
-    </div>
+    <div class="background"></div>
+    <div class="kapalikartbir" onclick="ciz()"></div>
+    <div class="kapalikartiki" onclick="ciz()"></div>
+    
+    <div class="profilbir"></div>
+    <div class="avatarbir"></div>
+    <div class="isimalanibir">kaan</div>
+    <div class="parambir">500$</div>
+
+    <div class="profiliki"></div>
+    <div class="avatariki"></div>
+    <div class="paramiki">500$</div>
+    <div class="isimalaniiki">mk</div>
+ 
+    <div class="profiluc"></div>
+    <div class="avataruc"></div> 
+    <div class="paramuc">500$</div>
+    <div class="isimalaniuc">kaan</div> 
+    
+    <div class="profildort"></div>
+    <div class="avatardort"></div> 
+    <div class="paramdort">500$</div>
+    <div class="isimalanidort">player4</div>
+
+    <div class="profilbes"></div>
+    <div class="avatarbes"></div> 
+    <div class="parambes">300$</div>
+    <div class="isimalanibes">player5</div>
+ 
+    <div class="profilalti"></div>
+    <div class="avataralti"></div> 
+    <div class="paramalti">300$</div>
+    <div class="isimalanialti">player6</div>
+    
+    
+    
+    <div class="hissebirkucukico"></div>
+    
+    <div class="puandurumu"></div>
+    
+    <div class="sirketicobir"></div>
+    <div class="sirketicoiki"></div>
+    <div class="sirketicouc"></div> 
+    <div class="sirketicodort"></div>   
+
+    <div class="puanbir">100</div>
+    <div class="puaniki">100</div>
+    <div class="puanuc">100</div>
+    <div class="puandort">100</div>
+
 
 
     <canvas id="canvas">
@@ -31,29 +76,358 @@ html, body { width:100%; height:100%;  overflow: hidden; } /* just to be sure th
 
   canvas { display:block; } /* To remove the scrollbars */
 
-  div {
-   position: absolute;
-   text-align: center;
-   top: 200px;
-   left: 200px;
-   width: 50px;
-   height:20px ;
-   border: 1px solid black;
-   overflow:hidden; 
-}
 
-.kutu{
+.background{
 
   position: absolute;
-   
+   width: 300px;
+   height:100px;
+   background-color:green;
+   background-size: 100% 100%;
+
+
+}
+
+.kapalikartbir{
+
+  position: absolute;
    width: 100px;
    height:150px ;
    background-image: url('public/kapalikart.png');
    background-size: 100% 100%;
    border: 1px solid black;
+}
+
+
+.puandurumu{
+  position: absolute;
+   width: 300px;
+   height:100px;
+   background-color: rgba(7, 63, 0, 0.712);
+   background-size: 100% 100%;
+   
+  
+}
+
+.sirketicobir {
+  position: absolute;
+   width: 75px;
+   height:75px ;
+   background-image: url('public/bmw.png');
+   background-size: 100% 100%;
+   
+
 
 }
 
+.sirketicoiki{
+  position: absolute;
+   width: 75px;
+   height:75px ;
+   background-image: url('public/shell.png');
+   background-size: 100% 100%;
+   
+}
+
+.sirketicouc{
+  position: absolute;
+   width: 75px;
+   height:75px ;
+   background-image: url('public/ebay.png');
+   background-size: 100% 100%;
+   
+}
+.sirketicodort{
+  position: absolute;
+   width: 75px;
+   height:75px ;
+   background-image: url('public/db.png');
+   background-size: 100% 100%;
+  
+}
+.puanbir {
+   position: absolute;
+  text-align: center;
+   border: 1px solid black;
+   overflow:hidden;   
+}
+
+
+.puaniki {
+   position: absolute;
+  text-align: center;
+   border: 1px solid black;
+   overflow:hidden;   
+}
+
+.puanuc {
+   position: absolute;
+  text-align: center;
+   border: 1px solid black;
+   overflow:hidden;   
+}
+
+.puandort {
+   position: absolute;
+  text-align: center;
+   border: 1px solid black;
+   overflow:hidden;   
+}
+
+
+.profilbir{
+
+  position: absolute;
+  border-radius: 10px;
+   width: 100px;
+   height:110px ;
+   background-color: rgba(7, 63, 0, 0.712);
+   background-size: 100% 100%;
+}
+
+.avatarbir{
+
+position: absolute;
+ width: 100px;
+ height:50px ;
+ background-image: url('public/skateavatar.png');
+ background-size: 100% 100%;
+}
+.isimalanibir{
+position: absolute;
+border-radius: 10px;
+text-align: center;
+ width: 100px;
+ height:20px ;
+ background-color: rgb(204, 18, 18);
+ background-size: 100% 100%;
+ overflow:hidden;   
+}
+
+.parambir{
+  position: absolute;
+border-radius: 10px;
+text-align: center;
+ width: 100px;
+ height:20px ;
+ background-color: rgba(7, 63, 0, 0.712);
+ background-size: 100% 100%;
+ overflow:hidden;   
+}
+
+.hissebirkucukico{
+    display: none;
+  position: absolute;
+text-align: center;
+ width: 20px;
+ height:20px ;
+ background-image: url('public/shell.png');
+ background-size: 100% 100%;
+ overflow:hidden;  
+
+
+}
+
+
+.profiliki{
+  position: absolute;
+  border-radius: 10px;
+   width: 100px;
+   height:110px ;
+   background-color: rgba(7, 63, 0, 0.712);
+   background-size: 100% 100%;
+}
+
+.avatariki{
+  position: absolute;
+ width: 100px;
+ height:50px ;
+ background-image: url('public/skateavatar.png');
+ background-size: 100% 100%;
+
+}
+
+.paramiki{
+  position: absolute;
+border-radius: 10px;
+text-align: center;
+ width: 100px;
+ height:20px ;
+ background-color: rgba(73, 141, 64, 0.712);
+ background-size: 100% 100%;
+ overflow:hidden; 
+
+}
+
+.isimalaniiki{
+
+position: absolute;
+border-radius: 10px;
+text-align: center;
+ width: 100px;
+ height:20px ;
+ background-color: rgb(204, 18, 18);
+ background-size: 100% 100%;
+ overflow:hidden;   
+
+}
+
+.profiluc{
+  position: absolute;
+  border-radius: 10px;
+   width: 100px;
+   height:110px ;
+   background-color: rgba(7, 63, 0, 0.712);
+   background-size: 100% 100%;
+
+}
+
+.avataruc{
+ 
+ position: absolute;
+ width: 100px;
+ height:50px ;
+ background-image: url('public/skateavatar.png');
+ background-size: 100% 100%;
+}
+.paramuc{
+  position: absolute;
+border-radius: 10px;
+text-align: center;
+ width: 100px;
+ height:20px ;
+ background-color: rgba(7, 63, 0, 0.712);
+ background-size: 100% 100%;
+ overflow:hidden;   
+}
+.isimalaniuc{
+  position: absolute;
+border-radius: 10px;
+text-align: center;
+ width: 100px;
+ height:20px ;
+ background-color: rgb(204, 18, 18);
+ background-size: 100% 100%;
+ overflow:hidden;  
+
+}
+
+.profildort{
+   position: absolute;
+   border-radius: 10px;
+   width: 100px;
+   height:110px ;
+   background-color: rgba(7, 63, 0, 0.712);
+   background-size: 100% 100%;
+}
+
+.avatardort{
+  position: absolute;
+ width: 100px;
+ height:50px ;
+ background-image: url('public/skateavatar.png');
+ background-size: 100% 100%;
+}
+
+.paramdort{
+ position: absolute;
+ border-radius: 10px;
+ text-align: center;
+ width: 100px;
+ height:20px ;
+ background-color: rgba(7, 63, 0, 0.712);
+ background-size: 100% 100%;
+ overflow:hidden; 
+}
+.isimalanidort{
+position: absolute;
+ border-radius: 10px;
+ text-align: center;
+ width: 100px;
+ height:20px ;
+ background-color: rgb(204, 18, 18);
+ background-size: 100% 100%;
+ overflow:hidden;
+
+}
+
+.profilbes{
+   position: absolute;
+   border-radius: 10px;
+   width: 100px;
+   height:110px ;
+   background-color: rgba(7, 63, 0, 0.712);
+   background-size: 100% 100%;
+}
+
+.avatarbes{
+ position: absolute;
+ width: 100px;
+ height:50px ;
+ background-image: url('public/skateavatar.png');
+ background-size: 100% 100%;
+}
+
+.parambes{
+ position: absolute;
+ border-radius: 10px; 
+ text-align: center;
+ width: 100px;
+ height:20px ;
+ background-color: rgba(7, 63, 0, 0.712);
+ background-size: 100% 100%;
+ overflow:hidden; 
+
+}
+
+.isimalanibes{
+ position: absolute;
+ border-radius: 10px;
+ text-align: center;
+ width: 100px;
+ height:20px ;
+ background-color: rgb(204, 18, 18);
+ background-size: 100% 100%;
+ overflow:hidden;  
+}
+
+.profilalti{
+   position: absolute;
+   border-radius: 10px;
+   width: 100px;
+   height:110px ;
+   background-color: rgba(7, 63, 0, 0.712);
+   background-size: 100% 100%; 
+}
+
+.avataralti{
+ position: absolute;
+ width: 100px;
+ height:50px ;
+ background-image: url('public/skateavatar.png');
+ background-size: 100% 100%;
+}
+
+.paramalti{
+ position: absolute;
+ border-radius: 10px; 
+ text-align: center;
+ width: 100px;
+ height:20px ;
+ background-color: rgba(7, 63, 0, 0.712);
+ background-size: 100% 100%;
+ overflow:hidden; 
+}
+.isimalanialti{
+ position: absolute;
+ border-radius: 10px;
+ text-align: center;
+ width: 100px;
+ height:20px ;
+ background-color: rgb(204, 18, 18);
+ background-size: 100% 100%;
+ overflow:hidden; 
+}
 
 
 
@@ -78,15 +452,264 @@ html, body { width:100%; height:100%;  overflow: hidden; } /* just to be sure th
     var yükseklik=window.innerHeight;
    
 
+            //background
+          document.querySelector('.background').style.left= 0+'px';
+          document.querySelector('.background').style.top= 0+'px';
+          document.querySelector('.background').style.width= genislik+'px';
+          document.querySelector('.background').style.height= yükseklik+'px';
+            //kapalıkart
+          document.querySelector('.kapalikartbir').style.left= genislik-genislik/2+3+'px';
+          document.querySelector('.kapalikartbir').style.top= yükseklik-150/parseFloat(1.36)-10+'px';
+          document.querySelector('.kapalikartbir').style.width= parseFloat(71.42)+'px';
+          document.querySelector('.kapalikartbir').style.height= parseFloat(110.29)+'px';
+           //profil
+          document.querySelector('.profilbir').style.left= genislik-genislik+10+'px';
+          document.querySelector('.profilbir').style.top= yükseklik/2-100+'px';
+          document.querySelector('.profilbir').style.width= 100+'px';
+          document.querySelector('.profilbir').style.height= 110+'px';
 
-    document.querySelector('.kutu').style.left= genislik-genislik/2+3+'px';
-          document.querySelector('.kutu').style.top= yükseklik-150/parseFloat(1.36)-10+'px';
-          document.querySelector('.kutu').style.width= parseFloat(71.42)+'px';
-          document.querySelector('.kutu').style.height= parseFloat(110.29)+'px';
+          //profiliki
+          document.querySelector('.profiliki').style.left= genislik-100-10+'px';
+          document.querySelector('.profiliki').style.top= yükseklik/2-100+'px';
+          document.querySelector('.profiliki').style.width= 100+'px';
+          document.querySelector('.profiliki').style.height= 110+'px';
 
+           //profiluc
+           document.querySelector('.profiluc').style.left= genislik/2-150+'px';
+          document.querySelector('.profiluc').style.top= yükseklik-yükseklik+40+'px';
+          document.querySelector('.profiluc').style.width= 100+'px';
+          document.querySelector('.profiluc').style.height= 110+'px';
+           
+          //profildort
+          document.querySelector('.profildort').style.left= genislik/2+50+'px';
+          document.querySelector('.profildort').style.top= yükseklik-yükseklik+40+'px';
+          document.querySelector('.profildort').style.width= 100+'px';
+          document.querySelector('.profildort').style.height= 110+'px';
+
+          //profilbes
+          document.querySelector('.profilbes').style.left= genislik/2-150+'px';
+          document.querySelector('.profilbes').style.top= yükseklik-3*100+100/2+'px';
+          document.querySelector('.profilbes').style.width= 100+'px';
+          document.querySelector('.profilbes').style.height= 110+'px';
+          //profilalti
+          document.querySelector('.profilalti').style.left=  genislik/2+50+'px';
+          document.querySelector('.profilalti').style.top= yükseklik-3*100+100/2+'px';
+          document.querySelector('.profilalti').style.width= 100+'px';
+          document.querySelector('.profilalti').style.height= 110+'px';
+
+          //avatarbir
+          document.querySelector('.avatarbir').style.left= genislik-genislik+10+'px';
+          document.querySelector('.avatarbir').style.top= yükseklik/2-100+'px';
+          document.querySelector('.avatarbir').style.width= 100+'px';
+          document.querySelector('.avatarbir').style.height= 50+'px';
+
+         //avatariki
+         document.querySelector('.avatariki').style.left= genislik-100-10+'px';
+          document.querySelector('.avatariki').style.top= yükseklik/2-100+'px';
+          document.querySelector('.avatariki').style.width= 100+'px';
+          document.querySelector('.avatariki').style.height= 50+'px';
+
+          //avataruc
+          document.querySelector('.avataruc').style.left=genislik/2-150+'px';
+          document.querySelector('.avataruc').style.top= yükseklik-yükseklik+40+'px';
+          document.querySelector('.avataruc').style.width= 100+'px';
+          document.querySelector('.avataruc').style.height= 50+'px';
+
+          //avatardort
+          document.querySelector('.avatardort').style.left=genislik/2+50+'px';
+          document.querySelector('.avatardort').style.top= yükseklik-yükseklik+40+'px';
+          document.querySelector('.avatardort').style.width= 100+'px';
+          document.querySelector('.avatardort').style.height= 50+'px';
+
+          //avatarbes
+          document.querySelector('.avatarbes').style.left=genislik/2-150+'px';
+          document.querySelector('.avatarbes').style.top= yükseklik-3*100+100/2+'px';
+          document.querySelector('.avatarbes').style.width= 100+'px';
+          document.querySelector('.avatarbes').style.height= 50+'px';
+          //avataralti
+          document.querySelector('.avataralti').style.left=genislik/2+50+'px';
+          document.querySelector('.avataralti').style.top= yükseklik-3*100+100/2+'px';
+          document.querySelector('.avataralti').style.width= 100+'px';
+          document.querySelector('.avataralti').style.height= 50+'px';
+          
+
+          //isimalanibir
+          document.querySelector('.isimalanibir').style.color='black';
+          document.querySelector('.isimalanibir').style.fontSize='20px';
+          document.querySelector('.isimalanibir').style.fontWeight='bold';
+          document.querySelector('.isimalanibir').style.left= genislik-genislik+10+'px';
+          document.querySelector('.isimalanibir').style.top= yükseklik/2-50+'px';
+          document.querySelector('.isimalanibir').style.width= 100+'px';
+          document.querySelector('.isimalanibir').style.height= 20+'px';
+
+          //isimalaniiki
+          document.querySelector('.isimalaniiki').style.color='black';
+          document.querySelector('.isimalaniiki').style.fontSize='20px';
+          document.querySelector('.isimalaniiki').style.fontWeight='bold';
+          document.querySelector('.isimalaniiki').style.left= genislik-100-10+'px';
+          document.querySelector('.isimalaniiki').style.top= yükseklik/2-50+'px';
+          document.querySelector('.isimalaniiki').style.width= 100+'px';
+          document.querySelector('.isimalaniiki').style.height= 20+'px';
+
+          //isimalaniuc
+          document.querySelector('.isimalaniuc').style.color='black';
+          document.querySelector('.isimalaniuc').style.fontSize='20px';
+          document.querySelector('.isimalaniuc').style.fontWeight='bold';
+          document.querySelector('.isimalaniuc').style.left= genislik/2-150+'px';
+          document.querySelector('.isimalaniuc').style.top= yükseklik-yükseklik+90+'px';
+          document.querySelector('.isimalaniuc').style.width= 100+'px';
+          document.querySelector('.isimalaniuc').style.height= 20+'px';
+
+          //isimalanidort
+          document.querySelector('.isimalanidort').style.color='black';
+          document.querySelector('.isimalanidort').style.fontSize='20px';
+          document.querySelector('.isimalanidort').style.fontWeight='bold';
+          document.querySelector('.isimalanidort').style.left= genislik/2+50+'px';
+          document.querySelector('.isimalanidort').style.top= yükseklik-yükseklik+90+'px';
+          document.querySelector('.isimalanidort').style.width= 100+'px';
+          document.querySelector('.isimalanidort').style.height= 20+'px';
+          
+         //isimalanibes
+          document.querySelector('.isimalanibes').style.color='black';
+          document.querySelector('.isimalanibes').style.fontSize='20px';
+          document.querySelector('.isimalanibes').style.fontWeight='bold';
+          document.querySelector('.isimalanibes').style.left= genislik/2-150+'px';
+          document.querySelector('.isimalanibes').style.top= yükseklik-3*100+100/2+50+'px';
+          document.querySelector('.isimalanibes').style.width= 100+'px';
+          document.querySelector('.isimalanibes').style.height= 20+'px';
+
+          //isimalanialti
+          document.querySelector('.isimalanialti').style.color='black';
+          document.querySelector('.isimalanialti').style.fontSize='20px';
+          document.querySelector('.isimalanialti').style.fontWeight='bold';
+          document.querySelector('.isimalanialti').style.left=  genislik/2+50+'px';
+          document.querySelector('.isimalanialti').style.top= yükseklik-3*100+100/2+50+'px';
+          document.querySelector('.isimalanialti').style.width= 100+'px';
+          document.querySelector('.isimalanialti').style.height= 20+'px';
+
+
+          //parambir
+          document.querySelector('.parambir').style.color='black';
+          document.querySelector('.parambir').style.fontSize='20px';
+          document.querySelector('.parambir').style.fontWeight='bold';
+          document.querySelector('.parambir').style.left= genislik-genislik+10+'px';
+          document.querySelector('.parambir').style.top= yükseklik/2-125+'px';
+          document.querySelector('.parambir').style.width= 100+'px';
+          document.querySelector('.parambir').style.height= 20+'px';
+
+          //paramiki
+          document.querySelector('.paramiki').style.color='black';
+          document.querySelector('.paramiki').style.fontSize='20px';
+          document.querySelector('.paramiki').style.fontWeight='bold';
+          document.querySelector('.paramiki').style.left= genislik-100-10+'px';
+          document.querySelector('.paramiki').style.top= yükseklik/2-125+'px';
+          document.querySelector('.paramiki').style.width= 100+'px';
+          document.querySelector('.paramiki').style.height= 20+'px';
+ 
+          //paramuc 
+          document.querySelector('.paramuc').style.color='black';
+          document.querySelector('.paramuc').style.fontSize='20px';
+          document.querySelector('.paramuc').style.fontWeight='bold';
+          document.querySelector('.paramuc').style.left= genislik/2-150+'px';
+          document.querySelector('.paramuc').style.top= yükseklik-yükseklik+40+'px';
+          document.querySelector('.paramuc').style.width= 100+'px';
+          document.querySelector('.paramuc').style.height= 20+'px';
+          //paramdort 
+          document.querySelector('.paramdort').style.color='black';
+          document.querySelector('.paramdort').style.fontSize='20px';
+          document.querySelector('.paramdort').style.fontWeight='bold';
+          document.querySelector('.paramdort').style.left= genislik/2+50+'px';
+          document.querySelector('.paramdort').style.top= yükseklik-yükseklik+40+'px';
+          document.querySelector('.paramdort').style.width= 100+'px';
+          document.querySelector('.paramdort').style.height= 20+'px';
+
+           //parambes 
+          document.querySelector('.parambes').style.color='black';
+          document.querySelector('.parambes').style.fontSize='20px';
+          document.querySelector('.parambes').style.fontWeight='bold';
+          document.querySelector('.parambes').style.left= genislik/2-150+'px';
+          document.querySelector('.parambes').style.top=  yükseklik-3*100+100/2-25+'px';
+          document.querySelector('.parambes').style.width= 100+'px';
+          document.querySelector('.parambes').style.height= 20+'px';
+
+          //paramalti 
+          document.querySelector('.paramalti').style.color='black';
+          document.querySelector('.paramalti').style.fontSize='20px';
+          document.querySelector('.paramalti').style.fontWeight='bold';
+          document.querySelector('.paramalti').style.left= genislik/2+50+'px';
+          document.querySelector('.paramalti').style.top=  yükseklik-3*100+100/2-25+'px';
+          document.querySelector('.paramalti').style.width= 100+'px';
+          document.querySelector('.paramalti').style.height= 20+'px';
+          
+          //puandurumu
+          document.querySelector('.puandurumu').style.left= genislik/2-150+'px';
+          document.querySelector('.puandurumu').style.top= yükseklik/2-100+'px';
+          document.querySelector('.puandurumu').style.width= 300+'px';
+          document.querySelector('.puandurumu').style.height= 100+'px';
+
+          //sirketicobir
+          document.querySelector('.sirketicobir').style.left= genislik/2-150+'px';
+          document.querySelector('.sirketicobir').style.top= yükseklik/2-75+'px';
+          document.querySelector('.sirketicobir').style.width= 75+'px';
+          document.querySelector('.sirketicobir').style.height= 75+'px';
+
+          //sirketicoiki
+          document.querySelector('.sirketicoiki').style.left= genislik/2-150+75+'px';
+          document.querySelector('.sirketicoiki').style.top= yükseklik/2-75+'px';
+          document.querySelector('.sirketicoiki').style.width= 75+'px';
+          document.querySelector('.sirketicoiki').style.height= 75+'px';
+
+           //sirketicouc
+           document.querySelector('.sirketicouc').style.left= genislik/2-150+2*75+'px';
+          document.querySelector('.sirketicouc').style.top= yükseklik/2-75+'px';
+          document.querySelector('.sirketicouc').style.width= 75+'px';
+          document.querySelector('.sirketicouc').style.height= 75+'px';
+
+          //sirketicodort
+          document.querySelector('.sirketicodort').style.left= genislik/2-150+3*75+'px';
+          document.querySelector('.sirketicodort').style.top= yükseklik/2-75+'px';
+          document.querySelector('.sirketicodort').style.width= 75+'px';
+          document.querySelector('.sirketicodort').style.height= 75+'px'; 
+
+             //puanbir
+          document.querySelector('.puanbir').style.color='black';
+          document.querySelector('.puanbir').style.fontSize='20px';
+          document.querySelector('.puanbir').style.fontWeight='bold';
+          document.querySelector('.puanbir').style.left= genislik/2-150 +'px';
+          document.querySelector('.puanbir').style.top= yükseklik/2-100+'px';          
+          document.querySelector('.puanbir').style.width= 75+'px';
+          document.querySelector('.puanbir').style.height= 23+'px';    
+           //puaniki  
+          document.querySelector('.puaniki').style.color='black';
+          document.querySelector('.puaniki').style.fontSize='20px';
+          document.querySelector('.puaniki').style.fontWeight='bold';
+          document.querySelector('.puaniki').style.left= genislik/2-150+75 +'px';
+          document.querySelector('.puaniki').style.top= yükseklik/2-100+'px';          
+          document.querySelector('.puaniki').style.width= 75+'px';
+          document.querySelector('.puaniki').style.height= 23+'px';  
+              //puanuc  
+          document.querySelector('.puanuc').style.color='black';
+          document.querySelector('.puanuc').style.fontSize='20px';
+          document.querySelector('.puanuc').style.fontWeight='bold';
+          document.querySelector('.puanuc').style.left= genislik/2-150+75+75 +'px';
+          document.querySelector('.puanuc').style.top= yükseklik/2-100+'px';          
+          document.querySelector('.puanuc').style.width= 75+'px';
+          document.querySelector('.puanuc').style.height= 23+'px';  
+            //puandort  
+            document.querySelector('.puandort').style.color='black';
+          document.querySelector('.puandort').style.fontSize='20px';
+          document.querySelector('.puandort').style.fontWeight='bold';
+          document.querySelector('.puandort').style.left= genislik/2-150+75+75+75 +'px';
+          document.querySelector('.puandort').style.top= yükseklik/2-100+'px';          
+          document.querySelector('.puandort').style.width= 75+'px';
+          document.querySelector('.puandort').style.height= 23+'px';  
+                     
+
+
+             
          
         function ciz(){
- alert("nasıl gidiyo ♥");
+ alert("murat senin AQ");
 
         };
 
@@ -95,10 +718,11 @@ html, body { width:100%; height:100%;  overflow: hidden; } /* just to be sure th
 
 
         window.onload = function(){ start();
-          document.querySelector('div').style.left= genislik-68+'px';
-          document.querySelector('div').style.top= 41+'px';
-         //yukarıdaki kutu divinin ilk değerleri eğer onload içinde olursa 
+         // document.querySelector('.puanbir').style.left= genislik-68+'px';
+         // document.querySelector('.puanbir').style.top= 41+'px';
+         //yukarıdaki kapalikartbir divinin ilk değerleri eğer onload içinde olursa 
          //ekran yenilendinde tekrar eski boyutlarına döner
+         
          
         };
 function start () {
@@ -156,15 +780,9 @@ function start () {
         function resizeCanvas() {
 
           canvas.width = window.innerWidth;;
-          canvas.height = window.innerHeight;
-               
+          canvas.height = window.innerHeight;           
 
-               
-    
-              
-              
-
-             
+          drawStuff()
        //        alert(canvas.width);
                
                
@@ -191,25 +809,7 @@ else if(canvas.height<=612){
 
 }
 
-//bu bloğun üstü
-            
-         // var text ;  
-         text =document.getElementById('mytext').id;
-               text= document.getElementById('mytext').className;
-              // text.style.top=500+"px";
-              document.querySelector('div').style.color='black';
-              document.querySelector('div').style.fontSize='20px';
-              document.querySelector('div').style.fontWeight='bold';
-              document.querySelector('div').style.left= canvas.width-100 +'px';
-              document.querySelector('div').style.top= 41+'px';
 
-              document.querySelector('.kutu').style.left= canvas.width-canvas.width/2+3+'px';
-              document.querySelector('.kutu').style.top= canvas.height-y/parseFloat(1.36)-10+'px';
-              document.querySelector('.kutu').style.width= x/parseFloat(1.4)+'px';
-              document.querySelector('.kutu').style.height= y/parseFloat(1.36)+'px';
-     //bu kod bloğunun en altı  
-
-          
 
 
            
@@ -227,8 +827,8 @@ else if(canvas.height<=612){
 
                 bank.addEventListener('load', function() {
                
-                  ctx.fillStyle = "green";
-                ctx.fillRect(0,0, canvas.width,canvas.height);
+             //     ctx.fillStyle = "green";
+             //   ctx.fillRect(0,0, canvas.width,canvas.height);
                 
 
 
@@ -262,14 +862,15 @@ else if(canvas.height<=612){
 
 
 
-   ctx.drawImage(puandurumu, canvas.width/2-y,canvas.height/2-x,y*2,x);
-   ctx.drawImage(profilresmi, canvas.width-x-10,canvas.height/2-x,x,x);
-   ctx.drawImage(profilresmi, canvas.width-canvas.width+10,canvas.height/2-x,x,x);
+   //ctx.drawImage(puandurumu, canvas.width/2-y,canvas.height/2-x,300,x);
+  
+  // ctx.drawImage(profilresmi, canvas.width-canvas.width+10,canvas.height/2-x,x,x);
+  // ctx.drawImage(profilresmi, canvas.width-x-10,canvas.height/2-x,x,x);
 
-  ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-3*x+x/2,x,x);
-  ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-canvas.height+40,x,x);
-  ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-canvas.height+40,x,x);
-  ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-3*x+x/2,x,x);
+ // ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-3*x+x/2,x,x);
+ //ctx.drawImage(profilresmi, canvas.width/2+x/2,canvas.height-canvas.height+40,x,x);
+ // ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-canvas.height+40,x,x);
+ // ctx.drawImage(profilresmi, canvas.width/2-y,canvas.height-3*x+x/2,x,x);
 
 // alttakiler kapalı kart resmi alanı
   //ctx.drawImage(kapalikart, canvas.width-canvas.width/2+3,canvas.height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
@@ -303,6 +904,292 @@ else if(canvas.height<=612){
         
         function drawStuff() {
                 // do your drawing stuff here
+               //bu bloğun üstü
+            
+         // var text ;  
+        // text =document.getElementById('.puanbir').id;
+              // text= document.getElementById('.puanbir').className;
+              // text.style.top=500+"px";
+               
+              
+              //background
+            document.querySelector('.background').style.left= 0+'px';
+            document.querySelector('.background').style.top= 0+'px';
+            document.querySelector('.background').style.width= canvas.width+'px';
+            document.querySelector('.background').style.height= canvas.height+'px';
+              
+              
+              //kapalıkart
+              document.querySelector('.kapalikartbir').style.left= canvas.width-canvas.width/2+3+'px';
+              document.querySelector('.kapalikartbir').style.top= canvas.height-y/parseFloat(1.36)-10+'px';
+              document.querySelector('.kapalikartbir').style.width= x/parseFloat(1.4)+'px';
+              document.querySelector('.kapalikartbir').style.height= y/parseFloat(1.36)+'px';
+
+           //puandurumu
+           document.querySelector('.puandurumu').style.left= canvas.width/2-y+'px';
+          document.querySelector('.puandurumu').style.top= canvas.height/2-x+'px';
+          document.querySelector('.puandurumu').style.width= y*2+'px';
+          document.querySelector('.puandurumu').style.height= x-1+'px';
+
+          
+            //sirketicobir
+            document.querySelector('.sirketicobir').style.left= canvas.width/2-y+'px';
+          document.querySelector('.sirketicobir').style.top= canvas.height/2-x/parseFloat(1.33)+'px';
+          document.querySelector('.sirketicobir').style.width= x/parseFloat(1.33)+'px';
+          document.querySelector('.sirketicobir').style.height= x/parseFloat(1.33)+'px';
+  
+          //sirketicoiki
+          document.querySelector('.sirketicoiki').style.left= canvas.width/2-y+x/parseFloat(1.33)+'px';
+          document.querySelector('.sirketicoiki').style.top= canvas.height/2-x/parseFloat(1.33)+'px';
+          document.querySelector('.sirketicoiki').style.width= x/parseFloat(1.33)+'px';
+          document.querySelector('.sirketicoiki').style.height= x/parseFloat(1.33)+'px';
+
+          //sirketicouc
+          document.querySelector('.sirketicouc').style.left= canvas.width/2-y+2*x/parseFloat(1.33)+'px';
+          document.querySelector('.sirketicouc').style.top= canvas.height/2-x/parseFloat(1.33)+'px';
+          document.querySelector('.sirketicouc').style.width= x/parseFloat(1.33)+'px';
+          document.querySelector('.sirketicouc').style.height= x/parseFloat(1.33)+'px';
+          
+          //sirketicodort
+          document.querySelector('.sirketicodort').style.left= canvas.width/2-y+3*x/parseFloat(1.33)+'px';
+          document.querySelector('.sirketicodort').style.top= canvas.height/2-x/parseFloat(1.33)+'px';
+          document.querySelector('.sirketicodort').style.width= x/parseFloat(1.33)+'px';
+          document.querySelector('.sirketicodort').style.height= x/parseFloat(1.33)+'px';
+           
+          //puanbir
+          document.querySelector('.puanbir').style.color='black';
+          document.querySelector('.puanbir').style.fontSize=  x/5+'px';
+          document.querySelector('.puanbir').style.fontWeight='bold';
+          document.querySelector('.puanbir').style.left= canvas.width/2-y +'px';
+          document.querySelector('.puanbir').style.top= canvas.height/2-x+'px';          
+          document.querySelector('.puanbir').style.width= x/parseFloat(1.36)+'px';
+          document.querySelector('.puanbir').style.height= x/parseFloat(4.34)+'px';             
+                                                                      
+           //puaniki  
+         
+          document.querySelector('.puaniki').style.color='black';
+          document.querySelector('.puaniki').style.fontSize=  x/5+'px';
+          document.querySelector('.puaniki').style.fontWeight='bold';
+          document.querySelector('.puaniki').style.left= canvas.width/2-y+x/parseFloat(1.33) +'px';
+          document.querySelector('.puaniki').style.top= canvas.height/2-x+'px';          
+          document.querySelector('.puaniki').style.width= x/parseFloat(1.36)+'px';
+          document.querySelector('.puaniki').style.height= x/parseFloat(4.34)+'px';   
+          
+           //puanuc  
+         
+          document.querySelector('.puanuc').style.color='black';
+          document.querySelector('.puanuc').style.fontSize=  x/5+'px';
+          document.querySelector('.puanuc').style.fontWeight='bold';
+          document.querySelector('.puanuc').style.left= canvas.width/2-y+2*x/parseFloat(1.33) +'px';
+          document.querySelector('.puanuc').style.top= canvas.height/2-x+'px';          
+          document.querySelector('.puanuc').style.width= x/parseFloat(1.36)+'px';
+          document.querySelector('.puanuc').style.height= x/parseFloat(4.34)+'px';   
+                    
+          //puandort  
+         
+          document.querySelector('.puandort').style.color='black';
+          document.querySelector('.puandort').style.fontSize=  x/5+'px';
+          document.querySelector('.puandort').style.fontWeight='bold';
+          document.querySelector('.puandort').style.left= canvas.width/2-y+3*x/parseFloat(1.33) +'px';
+          document.querySelector('.puandort').style.top= canvas.height/2-x+'px';          
+          document.querySelector('.puandort').style.width= x/parseFloat(1.36)+'px';
+          document.querySelector('.puandort').style.height= x/parseFloat(4.34)+'px';   
+
+          //profil
+          document.querySelector('.profilbir').style.left= canvas.width-canvas.width+10+'px';
+          document.querySelector('.profilbir').style.top= canvas.height/2-x+'px';
+          document.querySelector('.profilbir').style.width= x+'px';
+          document.querySelector('.profilbir').style.height= x+10+'px';
+          
+          //profiliki
+           document.querySelector('.profiliki').style.left= canvas.width-x-10+'px';
+          document.querySelector('.profiliki').style.top= canvas.height/2-x+'px';
+          document.querySelector('.profiliki').style.width= x+'px';
+          document.querySelector('.profiliki').style.height= x+10+'px';
+
+          //profiluc
+          document.querySelector('.profiluc').style.left= canvas.width/2-y+'px';
+          document.querySelector('.profiluc').style.top= canvas.height-canvas.height+40+'px';
+          document.querySelector('.profiluc').style.width= x+'px';
+          document.querySelector('.profiluc').style.height= x+10+'px';
+          //profildort
+          document.querySelector('.profildort').style.left= canvas.width/2+x/2+'px';
+          document.querySelector('.profildort').style.top= canvas.height-canvas.height+40+'px';
+          document.querySelector('.profildort').style.width= x+'px';
+          document.querySelector('.profildort').style.height= x+10+'px';
+
+          //profilbes
+          document.querySelector('.profilbes').style.left= canvas.width/2-y+'px';
+          document.querySelector('.profilbes').style.top= canvas.height-3*x+x/2+'px';
+          document.querySelector('.profilbes').style.width= x+'px';
+          document.querySelector('.profilbes').style.height= x+10+'px';
+          //profilalti
+          document.querySelector('.profilalti').style.left= canvas.width/2+x/2+'px';
+          document.querySelector('.profilalti').style.top= canvas.height-3*x+x/2+'px';
+          document.querySelector('.profilalti').style.width= x+'px';
+          document.querySelector('.profilalti').style.height= x+10+'px';
+                    
+            //avatarbir
+          document.querySelector('.avatarbir').style.left= canvas.width-canvas.width+10+'px';
+          document.querySelector('.avatarbir').style.top= canvas.height/2-x+'px';
+          document.querySelector('.avatarbir').style.width= x+'px';
+          document.querySelector('.avatarbir').style.height= x/2+'px'; 
+
+          //avatariki
+         document.querySelector('.avatariki').style.left= canvas.width-x-10+'px';
+          document.querySelector('.avatariki').style.top= canvas.height/2-x+'px';
+          document.querySelector('.avatariki').style.width= x+'px';
+          document.querySelector('.avatariki').style.height= x/2+'px';
+
+          //avataruc
+          document.querySelector('.avataruc').style.left=canvas.width/2-y+'px';
+          document.querySelector('.avataruc').style.top= canvas.height-canvas.height+40+'px';
+          document.querySelector('.avataruc').style.width= x+'px';
+          document.querySelector('.avataruc').style.height= x/2+'px';
+
+          //avatardort
+          document.querySelector('.avatardort').style.left=canvas.width/2+x/2+'px';
+          document.querySelector('.avatardort').style.top= canvas.height-canvas.height+40+'px';
+          document.querySelector('.avatardort').style.width= x+'px';
+          document.querySelector('.avatardort').style.height= x/2+'px';
+
+          //avatarbes
+          document.querySelector('.avatarbes').style.left=canvas.width/2-y+'px';
+          document.querySelector('.avatarbes').style.top= canvas.height-3*x+x/2+'px';
+          document.querySelector('.avatarbes').style.width= x+'px';
+          document.querySelector('.avatarbes').style.height= x/2+'px';
+
+          //avataralti
+          document.querySelector('.avataralti').style.left=canvas.width/2+x/2+'px';
+          document.querySelector('.avataralti').style.top= canvas.height-3*x+x/2+'px';
+          document.querySelector('.avataralti').style.width= x+'px';
+          document.querySelector('.avataralti').style.height= x/2+'px';
+
+          
+          //isimalanibir
+          
+          document.querySelector('.isimalanibir').style.color='black';
+          document.querySelector('.isimalanibir').style.fontSize=  x/5+'px';
+          document.querySelector('.isimalanibir').style.fontWeight='bold';
+          document.querySelector('.isimalanibir').style.left= canvas.width-canvas.width+10+'px';
+          document.querySelector('.isimalanibir').style.top= canvas.height/2-x/2+'px';
+          document.querySelector('.isimalanibir').style.width= x+'px';
+          document.querySelector('.isimalanibir').style.height= x/5+'px'; 
+
+          //isimalaniiki
+          
+          document.querySelector('.isimalaniiki').style.color='black';
+          document.querySelector('.isimalaniiki').style.fontSize=  x/5+'px';
+          document.querySelector('.isimalaniiki').style.fontWeight='bold';
+          document.querySelector('.isimalaniiki').style.left= canvas.width-x-10+'px';
+          document.querySelector('.isimalaniiki').style.top= canvas.height/2-x/2+'px';
+          document.querySelector('.isimalaniiki').style.width= x+'px';
+          document.querySelector('.isimalaniiki').style.height= x/5+'px';
+          
+          //isimalaniuc 
+          document.querySelector('.isimalaniuc').style.color='black';
+          document.querySelector('.isimalaniuc').style.fontSize= x/5+'px';
+          document.querySelector('.isimalaniuc').style.fontWeight='bold';
+          document.querySelector('.isimalaniuc').style.left= canvas.width/2-y+'px';
+          document.querySelector('.isimalaniuc').style.top= canvas.height-canvas.height+40+x/2+'px';
+          document.querySelector('.isimalaniuc').style.width= x+'px';
+          document.querySelector('.isimalaniuc').style.height= x/5+'px';
+      
+          //isimalanidort 
+          document.querySelector('.isimalanidort').style.color='black';
+          document.querySelector('.isimalanidort').style.fontSize= x/5+'px';
+          document.querySelector('.isimalanidort').style.fontWeight='bold';
+          document.querySelector('.isimalanidort').style.left= canvas.width/2+x/2+'px';
+          document.querySelector('.isimalanidort').style.top= canvas.height-canvas.height+40+x/2+'px';
+          document.querySelector('.isimalanidort').style.width= x+'px';
+          document.querySelector('.isimalanidort').style.height= x/5+'px';
+
+          //isimalanibes 
+          document.querySelector('.isimalanibes').style.color='black';
+          document.querySelector('.isimalanibes').style.fontSize= x/5+'px';
+          document.querySelector('.isimalanibes').style.fontWeight='bold';
+          document.querySelector('.isimalanibes').style.left= canvas.width/2-y+'px';
+          document.querySelector('.isimalanibes').style.top= canvas.height-3*x+x/2+x/2+'px';
+          document.querySelector('.isimalanibes').style.width= x+'px';
+          document.querySelector('.isimalanibes').style.height= x/5+'px';
+          //isimalanialti 
+          document.querySelector('.isimalanialti').style.color='black';
+          document.querySelector('.isimalanialti').style.fontSize= x/5+'px';
+          document.querySelector('.isimalanialti').style.fontWeight='bold';
+          document.querySelector('.isimalanialti').style.left=  canvas.width/2+x/2+'px';
+          document.querySelector('.isimalanialti').style.top= canvas.height-3*x+x/2+x/2+'px';
+          document.querySelector('.isimalanialti').style.width= x+'px';
+          document.querySelector('.isimalanialti').style.height= x/5+'px';
+
+
+            //parambir
+          document.querySelector('.parambir').style.color='black';
+          document.querySelector('.parambir').style.fontSize=  x/5+'px';
+          document.querySelector('.parambir').style.fontWeight='bold';
+          document.querySelector('.parambir').style.left= canvas.width-canvas.width+10+'px';
+          document.querySelector('.parambir').style.top= canvas.height/2-y/parseFloat(1.2)+'px';
+          document.querySelector('.parambir').style.width= x+'px';
+          document.querySelector('.parambir').style.height= x/5+'px'; 
+          
+            //paramiki
+            document.querySelector('.paramiki').style.color='black';
+          document.querySelector('.paramiki').style.fontSize=  x/5+'px';
+          document.querySelector('.paramiki').style.fontWeight='bold';
+          document.querySelector('.paramiki').style.left= canvas.width-x-10+'px';
+          document.querySelector('.paramiki').style.top= canvas.height/2-y/parseFloat(1.2)+'px';
+          document.querySelector('.paramiki').style.width= x+'px';
+          document.querySelector('.paramiki').style.height= x/5+'px';  
+
+          //paramuc 
+          document.querySelector('.paramuc').style.color='black';
+          document.querySelector('.paramuc').style.fontSize= x/5+'px';
+          document.querySelector('.paramuc').style.fontWeight='bold';
+          document.querySelector('.paramuc').style.left= canvas.width/2-y+'px';
+          document.querySelector('.paramuc').style.top= canvas.height-canvas.height+40-x/4+'px';
+          document.querySelector('.paramuc').style.width= x+'px';
+          document.querySelector('.paramuc').style.height= x/5+'px';
+
+           //paramdort 
+           document.querySelector('.paramdort').style.color='black';
+          document.querySelector('.paramdort').style.fontSize= x/5+'px';
+          document.querySelector('.paramdort').style.fontWeight='bold';
+          document.querySelector('.paramdort').style.left= canvas.width/2+x/2+'px';
+          document.querySelector('.paramdort').style.top= canvas.height-canvas.height+40-x/4+'px';
+          document.querySelector('.paramdort').style.width= x+'px';
+          document.querySelector('.paramdort').style.height= x/5+'px';
+
+           //parambes 
+          document.querySelector('.parambes').style.color='black';
+          document.querySelector('.parambes').style.fontSize= x/5+'px';
+          document.querySelector('.parambes').style.fontWeight='bold';
+          document.querySelector('.parambes').style.left= canvas.width/2-y+'px';
+          document.querySelector('.parambes').style.top=  canvas.height-3*x+x/2-x/4+'px';
+          document.querySelector('.parambes').style.width= x+'px';
+          document.querySelector('.parambes').style.height= x/5+'px';
+
+          //paramalti 
+          document.querySelector('.paramalti').style.color='black';
+          document.querySelector('.paramalti').style.fontSize= x/5+'px';
+          document.querySelector('.paramalti').style.fontWeight='bold';
+          document.querySelector('.paramalti').style.left= canvas.width/2+x/2+'px';
+          document.querySelector('.paramalti').style.top=  canvas.height-3*x+x/2-x/4+'px';
+          document.querySelector('.paramalti').style.width= x+'px';
+          document.querySelector('.paramalti').style.height= x/5+'px';
+       
+   
+        
+
+
+
+
+
+     //bu kod bloğunun en altı  
+
+          
+
+
+
+
         }
 };
 

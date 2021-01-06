@@ -372,7 +372,7 @@ app.use('/public',express.static(path.join(__dirname,'public')))
 
 app.get('/',function(req,res){
 
-fs.readFile('index.html',function(err,data){
+fs.readFile('client.html',function(err,data){
 
    res.write(data);
    res.write('');

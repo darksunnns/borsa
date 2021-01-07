@@ -25,6 +25,7 @@ let players={};
 let aksiyonlar =["2x","60","100","40"];
 let sirketler =["ibm","bmw","shell","ebay"];
 let degerler =[100,100,100,100];
+let names =["players1","players2","player3","player4"];
 
 
 
@@ -92,17 +93,20 @@ io.sockets.on('connection',function(socket){
         var clients;
        var odalar;
        let x=0; 
-     
        var numClients;
+       let isimler =["players1","players2","player3","player4"];
+       
 
         console.log(data.odalimit+": "+"kişilik oda odayaratıldı");
         console.log(data.odalimit);
-        
+        names.unshift(data.yazi);
+        //names[0]=data.yazi;
      //   socket.emit('updategamedata',{"sirket":sirketler});
           
         players[socket.id]=data ;
         players[socket.id].money=300;
-         players[socket.id].deger= dizi[0];
+        players[socket.id].deger= dizi[0];
+        players[socket.id].isimler= isimler;
         players[socket.id].aksiyonkartisayisi =kartsayisi;
      //   players[socket.id].i=0;
         players[socket.id].key=false;
@@ -136,7 +140,6 @@ io.sockets.on('connection',function(socket){
         socket.on('gamedata', function(msg){
        
     
-          
           let randomdeger = ( Math.random() * 500 ) | 0;
          console.log("heyyoo");
           //console.log(players);
@@ -151,7 +154,7 @@ io.sockets.on('connection',function(socket){
         
           var keys = Object.keys(socket.rooms);
           for (var i = 0; i < keys.length; i++) {
-              io.to(socket.rooms[keys[i]]).emit('updategamedata',{"sirket":sirketler,"deger":degerler});
+              io.to(socket.rooms[keys[i]]).emit('updategamedata',{"sirket":sirketler,"deger":degerler,"isimler":names});
               console.log("sondan önceki :"+keys);
           };
        //   console.log("enson :"+keys);

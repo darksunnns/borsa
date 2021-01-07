@@ -31,7 +31,7 @@
       
   <div class="firtspage">
       <div class="background"></div>
-      <div class="kapalikartbir"></div>
+      <div class="kapalikartbir" onclick="kartsec()"></div>
      
       
       <div class="profilbir"></div>
@@ -104,7 +104,7 @@
 
  let socket=io.connect();
  
-
+ var playkey=false;
 var first=document.querySelector(".starting-page");
 var gamepage=document.querySelector(".firtspage");
 var joinbutton = document.querySelector(".joinbutton");
@@ -113,6 +113,7 @@ let roomlimit=0;
 var textroomid;
 var joinid;
 var name;
+var isimler =["player1","player2","player3","player4"];;
 
 
 //var firstpage = 
@@ -126,11 +127,11 @@ console.log("name :"+name);
 console.log("join id :"+joinid);
 console.log("roomlimit :"+roomlimit);
    
-  socket.emit("login", {"isim":joinid,"yazi":name,"param":"kaan","odalimit":roomlimit});
+  socket.emit("login", {"isim":joinid,"yazi":name,"param":"kaan","odalimit":roomlimit-1});
 
   first.style.display="none";
  gamepage.style.display="block";
-
+ socket.emit("gamedata", {"kart":true});
 });
 
 createbutton.addEventListener('click', () =>{
@@ -141,15 +142,58 @@ createbutton.addEventListener('click', () =>{
   gameid = gameid+roomlimit.toString();
   textroomid = document.getElementById("txtRoomİd").value=gameid;
   joinid = document.getElementById("joinid").value=gameid;
-  alert(roomlimit);
 
-  alert(textroomid[textroomid.length-1]);
 
+  
  //   console.log("ii");
  // first.style.display="none";
  // gamepage.style.display="block";
  start();
 });
+
+socket.on("message", function (data) {
+               
+               playkey=data.playkey;
+          
+               console.log(data.isim);
+           
+               start();
+                  
+              });
+
+socket.on("newevent", function (veri) {
+            console.log(veri);
+          alert(veri.servermes);
+
+      //   isimler=veri.servermes;
+              // alert(data);
+              
+              start();
+   
+         });
+
+         socket.on("updategamedata", function (data) {
+           isimler=data.isimler;
+          console.log(data.isimler);
+          
+          // document.getElementById("money").innerHTML=300;
+ 
+          //console.log(data.sirket);
+         
+          
+           start();
+          });
+
+   function  kartsec() {
+
+    socket.emit("gamedata", {"kart":true});
+alert("tiklandi");
+
+
+
+   };
+
+
 
 
 
@@ -741,6 +785,8 @@ for (var i = 0; i < profilclassnames.length; i++) {
           document.querySelector(profilclassnames[i]).style.top= profiltopvalues[i]+'px';
           document.querySelector(profilclassnames[i]).style.width= x+'px';
           document.querySelector(profilclassnames[i]).style.height= x+10+'px';
+        
+         // border: 1px solid darkorange;
           
             //avatar
           document.querySelector(avatarclassnames[i]).style.display='none';
@@ -775,20 +821,37 @@ for (var i = 0; i < profilclassnames.length; i++) {
 
      };
 
+
+
+    
+
      
-          
+      
 for (var i = 0; i < sayi.length; i++) {
   document.querySelector(profilclassnames[sayi[i]]).style.display='block';
   document.querySelector(avatarclassnames[sayi[i]]).style.display='block';
   document.querySelector(isimalaniclassnames[sayi[i]]).style.display='block';
-  document.querySelector(isimalaniclassnames[sayi[i]]).textContent="player"+i;
+  document.querySelector(isimalaniclassnames[sayi[i]]).textContent=isimler[i];
   document.querySelector(paramclassnames[sayi[i]]).style.display='block';
+  
+  document.querySelector(profilclassnames[sayi[0]]).style.border="1px solid #000";
+  
  //alert(sayi[i]);
  //alert(sayi.length);
+ //alert(isim);
      };
-    
+ 
+   
       
-    
+    if(playkey){
+
+      for (var i = 0; i < sayi.length; i++) {
+
+  //document.querySelector(profilclassnames[sayi[i]]).style.border="2px solid #000";
+  
+     };
+ 
+    };
 
 
 

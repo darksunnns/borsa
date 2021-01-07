@@ -5,168 +5,1263 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     
     <title>A Multiplayer Game</title>
-   
+    <link href="public/css/style.css" rel="stylesheet">
     
+
   </head>
   <body>
-    <input type="text" id="txtRoomName" placeholder="odaismi">
-    <input type="text" id="mgs" placeholder="writeyourmesage" > 
-    <input type="text" id="roomnumb" placeholder="roomnumb" style="width: 50px;" > 
-    <button onclick="odayarat()">Oda yarat</button>
-    <button onclick="tikla()">Odaya Giriş Yap</button>
-    <button onclick="kartsec()">kartsec</button>
-    <div id="money" style="color:red">300$</div>
-    <div id="bmw">bmw 100</div>
-    <div id="ibm">ibm 100</div>
-    <div id="shell">shell 100</div>
-    <div id="ebay">ebay 100</div>
+
+
+    <div class="starting-page">
+     
+      <h3>Piazza Affari</h3>
+      
+      <div class=title>Write name</div>
+      <input maxlength=7 id="name" class=field>
+      <input type=text disabled  class=field id="txtRoomİd" value=7GHGS0>
+      <input type="number" min="2" max="6" id="roomlimit" class=field placeholder="room limit">
+    
+      <button class=createbutton>Create room</button>
+      <div class=title>Write friend code</div>
+      <input maxlength=7 id="joinid" class=field>
+      <button class=joinbutton>Join room</button>
+    
+    
+        </div>
+      
+  <div class="firtspage">
+      <div class="background"></div>
+      <div class="kapalikartbir" onclick="kartsec()"></div>
+     
+      
+      <div class="profilbir"></div>
+      <div class="avatarbir"></div>
+      <div class="isimalanibir">kaan</div>
+      <div class="parambir">500$</div>
+  
+      <div class="profiliki"></div>
+      <div class="avatariki"></div>
+      <div class="paramiki">500$</div>
+      <div class="isimalaniiki">mk</div>
+   
+      <div class="profiluc"></div>
+      <div class="avataruc"></div> 
+      <div class="paramuc">500$</div>
+      <div class="isimalaniuc">kaan</div> 
+      
+      <div class="profildort"></div>
+      <div class="avatardort"></div> 
+      <div class="paramdort">500$</div>
+      <div class="isimalanidort">player4</div>
+  
+      <div class="profilbes"></div>
+      <div class="avatarbes"></div> 
+      <div class="parambes">300$</div>
+      <div class="isimalanibes">player5</div>
+   
+      <div class="profilalti"></div>
+      <div class="avataralti"></div> 
+      <div class="paramalti">300$</div>
+      <div class="isimalanialti">player6</div>
+
+      <div class="profilyedi"></div>
+      <div class="avataryedi"></div> 
+      <div class="paramyedi">300$</div>
+      <div class="isimalaniyedi">player7</div>
+
+      <div class="profilsekiz"></div>
+      <div class="avatarsekiz"></div> 
+      <div class="paramsekiz">300$</div>
+      <div class="isimalanisekiz">player7</div>
+      
+      
+      
+      <div class="hissebirkucukico"></div>
+      
+      <div class="puandurumu"></div>
+      
+      <div class="sirketicobir"></div>
+      <div class="sirketicoiki"></div>
+      <div class="sirketicouc"></div> 
+      <div class="sirketicodort"></div>   
+      
+  
+      <div class="puanbir">100</div>
+      <div class="puaniki">100</div>
+      <div class="puanuc">100</div>
+      <div class="puandort">100</div>
+    
+    </div>
+  
+  
 
 
   
+ 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      let socket=io.connect();
-      var playkey=false;
-      var promtkey=true;
-      var limitkey=false;
-      var name ;
-      var msg;
-      var  roomnumb;
-      if(limitkey){
-        var odalimit =  prompt("oda kaç kişilik olsun ?");
-        if(odalimit.length>=0){limitkey=false;};
-      };
-                
-      function odayarat()  {
-                   roomnumb =document.getElementById("roomnumb").value;
-                   var thisGameId = ( Math.random() * 100000 ) | 0;
-                      var muz= thisGameId.toString();
-                      muz =muz+roomnumb.toString();
-                   name =document.getElementById("txtRoomName").value=muz;
-                 
-                
-                   alert(name[name.length-1]);
-                 //   msg =document.getElementById("mgs").value;
-                  //   var param =socket.id;
-                 
-                    alert(name);
-                 //   socket.emit("login", {"isim":name,"yazi":msg,"param":"kaan","odalimit":odalimit});
-               };
 
-               function tikla()  {
-                   name =document.getElementById("txtRoomName").value;
-                    msg =document.getElementById("mgs").value;
-                    roomnumb =document.getElementById("roomnumb").value=name[name.length-1];
-                     var param =socket.id;
-                 //    if( odalimit == null){
-                  //     odalimit=name[name.length-1];
-                  //     alert(odalimit);
-                 //    };
-                     alert(name);
-                   // alert(odalimit);
-                    socket.emit("login", {"isim":name,"yazi":msg,"param":"kaan","odalimit":roomnumb});
-               };
-                
-            
-               function kartsec(){
+ let socket=io.connect();
+ 
+ var playkey=false;
+var first=document.querySelector(".starting-page");
+var gamepage=document.querySelector(".firtspage");
+var joinbutton = document.querySelector(".joinbutton");
+var createbutton = document.querySelector(".createbutton");
+let roomlimit=0;
+var textroomid;
+var joinid;
+var name;
+var isimler =["player1","player2","player3","player4"];;
+
+
+//var firstpage = 
+joinbutton.addEventListener('click', () =>{
+
+  
+  joinid =document.getElementById("joinid").value;
+  name =document.getElementById("name").value;
+  roomlimit =document.getElementById("roomlimit").value=joinid[joinid.length-1];
+console.log("name :"+name);
+console.log("join id :"+joinid);
+console.log("roomlimit :"+roomlimit);
+   
+  socket.emit("login", {"isim":joinid,"yazi":name,"param":"kaan","odalimit":roomlimit-1});
+
+  first.style.display="none";
+ gamepage.style.display="block";
+ socket.emit("gamedata", {"kart":true});
+});
+
+createbutton.addEventListener('click', () =>{
+ 
+   roomlimit =document.getElementById("roomlimit").value;
+  var thisGameId = ( Math.random() * 100000 ) | 0;
+  var gameid= thisGameId.toString();
+  gameid = gameid+roomlimit.toString();
+  textroomid = document.getElementById("txtRoomİd").value=gameid;
+  joinid = document.getElementById("joinid").value=gameid;
+
+
+  
+ //   console.log("ii");
+ // first.style.display="none";
+ // gamepage.style.display="block";
+ start();
+});
+
+socket.on("message", function (data) {
+               
+               playkey=data.playkey;
+          
+               console.log(data.isim);
            
-         if(playkey){
-          if(promtkey){
-            var deger =  prompt("degergir");
-            var sabitdeger =deger;
-             alert("olmus");
-             console.log(deger.length);
-             if(deger.length>=0){promtkey=false;};
+               start();
+                  
+              });
+
+socket.on("newevent", function (veri) {
+            console.log(veri);
+          alert(veri.servermes);
+
+      //   isimler=veri.servermes;
+              // alert(data);
+              
+              start();
+   
+         });
+
+         socket.on("updategamedata", function (data) {
+           isimler=data.isimler;
+          console.log(data.isimler);
+          
+          // document.getElementById("money").innerHTML=300;
+ 
+          //console.log(data.sirket);
+         
+          
+           start();
+          });
+
+   function  kartsec() {
+
+    socket.emit("gamedata", {"kart":true});
+alert("tiklandi");
+
+
+
+   };
+
+
+
+
+
+
+
+   /*
+
+  
+  var genislik=window.innerWidth;
+    var yükseklik=window.innerHeight;
+  
+
+    
+     //background
+     document.querySelector('.background').style.left= 0+'px';
+          document.querySelector('.background').style.top= 0+'px';
+          document.querySelector('.background').style.width= genislik+'px';
+          document.querySelector('.background').style.height= yükseklik+'px';
+            //kapalıkartbir
+          document.querySelector('.kapalikartbir').style.left= genislik-genislik/2+3+'px';
+          document.querySelector('.kapalikartbir').style.top= yükseklik-150/parseFloat(1.36)-10+'px';
+          document.querySelector('.kapalikartbir').style.width= parseFloat(71.42)+'px';
+          document.querySelector('.kapalikartbir').style.height= parseFloat(110.29)+'px';
+            //kapalıkartiki
+        
+
+           //profil
+          document.querySelector('.profilbir').style.left= genislik-genislik+10+'px';
+          document.querySelector('.profilbir').style.top= yükseklik/2-100+'px';
+          document.querySelector('.profilbir').style.width= 100+'px';
+          document.querySelector('.profilbir').style.height= 110+'px';
+
+          //profiliki
+          document.querySelector('.profiliki').style.left= genislik-100-10+'px';
+          document.querySelector('.profiliki').style.top= yükseklik/2-100+'px';
+          document.querySelector('.profiliki').style.width= 100+'px';
+          document.querySelector('.profiliki').style.height= 110+'px';
+
+           //profiluc
+           document.querySelector('.profiluc').style.left= genislik/2-150+'px';
+          document.querySelector('.profiluc').style.top= yükseklik-yükseklik+40+'px';
+          document.querySelector('.profiluc').style.width= 100+'px';
+          document.querySelector('.profiluc').style.height= 110+'px';
+           
+          //profildort
+          document.querySelector('.profildort').style.left= genislik/2+50+'px';
+          document.querySelector('.profildort').style.top= yükseklik-yükseklik+40+'px';
+          document.querySelector('.profildort').style.width= 100+'px';
+          document.querySelector('.profildort').style.height= 110+'px';
+
+          //profilbes
+          document.querySelector('.profilbes').style.left= genislik/2-150+'px';
+          document.querySelector('.profilbes').style.top= yükseklik-3*100+100/2+'px';
+          document.querySelector('.profilbes').style.width= 100+'px';
+          document.querySelector('.profilbes').style.height= 110+'px';
+          //profilalti
+          document.querySelector('.profilalti').style.left=  genislik/2+50+'px';
+          document.querySelector('.profilalti').style.top= yükseklik-3*100+100/2+'px';
+          document.querySelector('.profilalti').style.width= 100+'px';
+          document.querySelector('.profilalti').style.height= 110+'px';
+
+          //avatarbir
+          document.querySelector('.avatarbir').style.left= genislik-genislik+10+'px';
+          document.querySelector('.avatarbir').style.top= yükseklik/2-100+'px';
+          document.querySelector('.avatarbir').style.width= 100+'px';
+          document.querySelector('.avatarbir').style.height= 50+'px';
+
+         //avatariki
+         document.querySelector('.avatariki').style.left= genislik-100-10+'px';
+          document.querySelector('.avatariki').style.top= yükseklik/2-100+'px';
+          document.querySelector('.avatariki').style.width= 100+'px';
+          document.querySelector('.avatariki').style.height= 50+'px';
+
+          //avataruc
+          document.querySelector('.avataruc').style.left=genislik/2-150+'px';
+          document.querySelector('.avataruc').style.top= yükseklik-yükseklik+40+'px';
+          document.querySelector('.avataruc').style.width= 100+'px';
+          document.querySelector('.avataruc').style.height= 50+'px';
+
+          //avatardort
+          document.querySelector('.avatardort').style.left=genislik/2+50+'px';
+          document.querySelector('.avatardort').style.top= yükseklik-yükseklik+40+'px';
+          document.querySelector('.avatardort').style.width= 100+'px';
+          document.querySelector('.avatardort').style.height= 50+'px';
+
+          //avatarbes
+          document.querySelector('.avatarbes').style.left=genislik/2-150+'px';
+          document.querySelector('.avatarbes').style.top= yükseklik-3*100+100/2+'px';
+          document.querySelector('.avatarbes').style.width= 100+'px';
+          document.querySelector('.avatarbes').style.height= 50+'px';
+          //avataralti
+          document.querySelector('.avataralti').style.left=genislik/2+50+'px';
+          document.querySelector('.avataralti').style.top= yükseklik-3*100+100/2+'px';
+          document.querySelector('.avataralti').style.width= 100+'px';
+          document.querySelector('.avataralti').style.height= 50+'px';
+          
+
+          //isimalanibir
+          document.querySelector('.isimalanibir').style.color='black';
+          document.querySelector('.isimalanibir').style.fontSize='20px';
+          document.querySelector('.isimalanibir').style.fontWeight='bold';
+          document.querySelector('.isimalanibir').style.left= genislik-genislik+10+'px';
+          document.querySelector('.isimalanibir').style.top= yükseklik/2-50+'px';
+          document.querySelector('.isimalanibir').style.width= 100+'px';
+          document.querySelector('.isimalanibir').style.height= 20+'px';
+
+          //isimalaniiki
+          document.querySelector('.isimalaniiki').style.color='black';
+          document.querySelector('.isimalaniiki').style.fontSize='20px';
+          document.querySelector('.isimalaniiki').style.fontWeight='bold';
+          document.querySelector('.isimalaniiki').style.left= genislik-100-10+'px';
+          document.querySelector('.isimalaniiki').style.top= yükseklik/2-50+'px';
+          document.querySelector('.isimalaniiki').style.width= 100+'px';
+          document.querySelector('.isimalaniiki').style.height= 20+'px';
+
+          //isimalaniuc
+          document.querySelector('.isimalaniuc').style.color='black';
+          document.querySelector('.isimalaniuc').style.fontSize='20px';
+          document.querySelector('.isimalaniuc').style.fontWeight='bold';
+          document.querySelector('.isimalaniuc').style.left= genislik/2-150+'px';
+          document.querySelector('.isimalaniuc').style.top= yükseklik-yükseklik+90+'px';
+          document.querySelector('.isimalaniuc').style.width= 100+'px';
+          document.querySelector('.isimalaniuc').style.height= 20+'px';
+
+          //isimalanidort
+          document.querySelector('.isimalanidort').style.color='black';
+          document.querySelector('.isimalanidort').style.fontSize='20px';
+          document.querySelector('.isimalanidort').style.fontWeight='bold';
+          document.querySelector('.isimalanidort').style.left= genislik/2+50+'px';
+          document.querySelector('.isimalanidort').style.top= yükseklik-yükseklik+90+'px';
+          document.querySelector('.isimalanidort').style.width= 100+'px';
+          document.querySelector('.isimalanidort').style.height= 20+'px';
+          
+         //isimalanibes
+          document.querySelector('.isimalanibes').style.color='black';
+          document.querySelector('.isimalanibes').style.fontSize='20px';
+          document.querySelector('.isimalanibes').style.fontWeight='bold';
+          document.querySelector('.isimalanibes').style.left= genislik/2-150+'px';
+          document.querySelector('.isimalanibes').style.top= yükseklik-3*100+100/2+50+'px';
+          document.querySelector('.isimalanibes').style.width= 100+'px';
+          document.querySelector('.isimalanibes').style.height= 20+'px';
+
+          //isimalanialti
+          document.querySelector('.isimalanialti').style.color='black';
+          document.querySelector('.isimalanialti').style.fontSize='20px';
+          document.querySelector('.isimalanialti').style.fontWeight='bold';
+          document.querySelector('.isimalanialti').style.left=  genislik/2+50+'px';
+          document.querySelector('.isimalanialti').style.top= yükseklik-3*100+100/2+50+'px';
+          document.querySelector('.isimalanialti').style.width= 100+'px';
+          document.querySelector('.isimalanialti').style.height= 20+'px';
+
+
+          //parambir
+          document.querySelector('.parambir').style.color='black';
+          document.querySelector('.parambir').style.fontSize='20px';
+          document.querySelector('.parambir').style.fontWeight='bold';
+          document.querySelector('.parambir').style.left= genislik-genislik+10+'px';
+          document.querySelector('.parambir').style.top= yükseklik/2-125+'px';
+          document.querySelector('.parambir').style.width= 100+'px';
+          document.querySelector('.parambir').style.height= 20+'px';
+
+          //paramiki
+          document.querySelector('.paramiki').style.color='black';
+          document.querySelector('.paramiki').style.fontSize='20px';
+          document.querySelector('.paramiki').style.fontWeight='bold';
+          document.querySelector('.paramiki').style.left= genislik-100-10+'px';
+          document.querySelector('.paramiki').style.top= yükseklik/2-125+'px';
+          document.querySelector('.paramiki').style.width= 100+'px';
+          document.querySelector('.paramiki').style.height= 20+'px';
+ 
+          //paramuc 
+          document.querySelector('.paramuc').style.color='black';
+          document.querySelector('.paramuc').style.fontSize='20px';
+          document.querySelector('.paramuc').style.fontWeight='bold';
+          document.querySelector('.paramuc').style.left= genislik/2-150+'px';
+          document.querySelector('.paramuc').style.top= yükseklik-yükseklik+40+'px';
+          document.querySelector('.paramuc').style.width= 100+'px';
+          document.querySelector('.paramuc').style.height= 20+'px';
+          //paramdort 
+          document.querySelector('.paramdort').style.color='black';
+          document.querySelector('.paramdort').style.fontSize='20px';
+          document.querySelector('.paramdort').style.fontWeight='bold';
+          document.querySelector('.paramdort').style.left= genislik/2+50+'px';
+          document.querySelector('.paramdort').style.top= yükseklik-yükseklik+40+'px';
+          document.querySelector('.paramdort').style.width= 100+'px';
+          document.querySelector('.paramdort').style.height= 20+'px';
+
+           //parambes 
+          document.querySelector('.parambes').style.color='black';
+          document.querySelector('.parambes').style.fontSize='20px';
+          document.querySelector('.parambes').style.fontWeight='bold';
+          document.querySelector('.parambes').style.left= genislik/2-150+'px';
+          document.querySelector('.parambes').style.top=  yükseklik-3*100+100/2-25+'px';
+          document.querySelector('.parambes').style.width= 100+'px';
+          document.querySelector('.parambes').style.height= 20+'px';
+
+          //paramalti 
+          document.querySelector('.paramalti').style.color='black';
+          document.querySelector('.paramalti').style.fontSize='20px';
+          document.querySelector('.paramalti').style.fontWeight='bold';
+          document.querySelector('.paramalti').style.left= genislik/2+50+'px';
+          document.querySelector('.paramalti').style.top=  yükseklik-3*100+100/2-25+'px';
+          document.querySelector('.paramalti').style.width= 100+'px';
+          document.querySelector('.paramalti').style.height= 20+'px';
+          
+          //puandurumu
+          document.querySelector('.puandurumu').style.left= genislik/2-150+'px';
+          document.querySelector('.puandurumu').style.top= yükseklik/2-100+'px';
+          document.querySelector('.puandurumu').style.width= 300+'px';
+          document.querySelector('.puandurumu').style.height= 100+'px';
+
+          //sirketicobir
+          document.querySelector('.sirketicobir').style.left= genislik/2-150+'px';
+          document.querySelector('.sirketicobir').style.top= yükseklik/2-75+'px';
+          document.querySelector('.sirketicobir').style.width= 75+'px';
+          document.querySelector('.sirketicobir').style.height= 75+'px';
+
+          //sirketicoiki
+          document.querySelector('.sirketicoiki').style.left= genislik/2-150+75+'px';
+          document.querySelector('.sirketicoiki').style.top= yükseklik/2-75+'px';
+          document.querySelector('.sirketicoiki').style.width= 75+'px';
+          document.querySelector('.sirketicoiki').style.height= 75+'px';
+
+           //sirketicouc
+           document.querySelector('.sirketicouc').style.left= genislik/2-150+2*75+'px';
+          document.querySelector('.sirketicouc').style.top= yükseklik/2-75+'px';
+          document.querySelector('.sirketicouc').style.width= 75+'px';
+          document.querySelector('.sirketicouc').style.height= 75+'px';
+
+          //sirketicodort
+          document.querySelector('.sirketicodort').style.left= genislik/2-150+3*75+'px';
+          document.querySelector('.sirketicodort').style.top= yükseklik/2-75+'px';
+          document.querySelector('.sirketicodort').style.width= 75+'px';
+          document.querySelector('.sirketicodort').style.height= 75+'px'; 
+
+             //puanbir
+          document.querySelector('.puanbir').style.color='black';
+          document.querySelector('.puanbir').style.fontSize='20px';
+          document.querySelector('.puanbir').style.fontWeight='bold';
+          document.querySelector('.puanbir').style.left= genislik/2-150 +'px';
+          document.querySelector('.puanbir').style.top= yükseklik/2-100+'px';          
+          document.querySelector('.puanbir').style.width= 75+'px';
+          document.querySelector('.puanbir').style.height= 23+'px';    
+           //puaniki  
+          document.querySelector('.puaniki').style.color='black';
+          document.querySelector('.puaniki').style.fontSize='20px';
+          document.querySelector('.puaniki').style.fontWeight='bold';
+          document.querySelector('.puaniki').style.left= genislik/2-150+75 +'px';
+          document.querySelector('.puaniki').style.top= yükseklik/2-100+'px';          
+          document.querySelector('.puaniki').style.width= 75+'px';
+          document.querySelector('.puaniki').style.height= 23+'px';  
+              //puanuc  
+          document.querySelector('.puanuc').style.color='black';
+          document.querySelector('.puanuc').style.fontSize='20px';
+          document.querySelector('.puanuc').style.fontWeight='bold';
+          document.querySelector('.puanuc').style.left= genislik/2-150+75+75 +'px';
+          document.querySelector('.puanuc').style.top= yükseklik/2-100+'px';          
+          document.querySelector('.puanuc').style.width= 75+'px';
+          document.querySelector('.puanuc').style.height= 23+'px';  
+            //puandort  
+            document.querySelector('.puandort').style.color='black';
+          document.querySelector('.puandort').style.fontSize='20px';
+          document.querySelector('.puandort').style.fontWeight='bold';
+          document.querySelector('.puandort').style.left= genislik/2-150+75+75+75 +'px';
+          document.querySelector('.puandort').style.top= yükseklik/2-100+'px';          
+          document.querySelector('.puandort').style.width= 75+'px';
+          document.querySelector('.puandort').style.height= 23+'px';  
+                     
+
+*/
+
+       
+     
+
+
+         
+        
+
+        
+
+
+
+
+
+        window.onload = function(){ start();
+         // document.querySelector('.puanbir').style.left= genislik-68+'px';
+         // document.querySelector('.puanbir').style.top= 41+'px';
+         //yukarıdaki kapalikartbir divinin ilk değerleri eğer onload içinde olursa 
+         //ekran yenilendinde tekrar eski boyutlarına döner
+         
+         
+        };
+function start () {
+  
+               console.log("room limit last :"+roomlimit);
+                var width ;
+                var height;
+                let playerlocation =[67,67,67,654,6701,65401,235401];
+                let sayi= playerlocation[roomlimit].toString();
+                let puanclassnames =[".puanbir",".puaniki",".puanuc",".puandort"];
+                let sirketicoclassnames =[".sirketicobir",".sirketicoiki",".sirketicouc",".sirketicodort"]; 
+                let profilclassnames = [".profilbir",".profiliki",".profiluc",".profildort",".profilbes",".profilalti",".profilyedi",".profilsekiz"];   
+                let avatarclassnames = [".avatarbir",".avatariki",".avataruc",".avatardort",".avatarbes",".avataralti",".avataryedi",".avatarsekiz"];   
+                let isimalaniclassnames =[".isimalanibir",".isimalaniiki",".isimalaniuc",".isimalanidort",".isimalanibes",".isimalanialti",".isimalaniyedi",".isimalanisekiz"];
+                let paramclassnames = [".parambir",".paramiki",".paramuc",".paramdort",".parambes",".paramalti",".paramyedi",".paramsekiz"];  
+                //   let puanleftvalues =["width/2-y","width/2-y+x/parseFloat(1.33)","width/2-y+2*x/parseFloat(1.33)","width/2-y+3*x/parseFloat(1.33)"];  
+
+
+
+
+    
+        // Create new img element
+    var bank = new Image(); 
+    var menu = new Image();
+    var kapalikart = new Image();
+    var puandurumu = new Image();
+    var profilresmi = new Image();
+    var hissebir = new Image();
+    var hisseiki = new Image();
+    var hisseuc = new Image();
+    var hissedort = new Image();
+    var acikkart = new Image();
+    var bm = new Image();
+    var db = new Image();
+    var ibm = new Image();
+    var wosk = new Image();
+
+
+    var x=100;
+    var y=150;
+
+    
+    
+
+
+
+
+ 
+    kapalikart.src = 'public/kapalikart.png';
+      acikkart.src = 'public/acikkart.png'; 
+      puandurumu.src = 'public/puandurumu.png';
+      profilresmi.src = 'public/profilresmi.png'; 
+      hissebir.src = 'public/hissebir.png';   
+      hisseiki.src = 'public/hisseiki.png';
+      hisseuc.src = 'public/hisseuc.png';
+      hissedort.src = 'public/hissedort.png';     
+      bm.src = 'public/bm.png';
+      db.src = 'public/db.png';
+      ibm.src = 'public/ibm.png';
+      wosk.src = 'public/wosk.png';                        
+      menu.src = 'public/menu.png';
+     bank.src = 'public/bank.png';
+     
+             
+     
+        // resize the canvas to fill browser window dynamically
+        window.addEventListener('resize', resizeCanvas, false);
+        
+
+
+
+        function resizeCanvas() {
+           
+         width = window.innerWidth;
+         height = window.innerHeight;           
+       //  alert("genislik :"+genislik);
+       //  alert("canvas genislik :"+width);
+
+          drawStuff();
+       //        alert(width);
+               
+               
+         //      alert(height); 
+ 
+ 
+               
+
+if(width<=612) {
+
+x=width/parseFloat(6.12)
+y=width/parseFloat(4.08);
+//alert("x degeri"+x);
+}
+else if(height<=612){
+  //alert("dar ekran");
+  x=height/parseFloat(6.12)
+  y=height/parseFloat(4.08); 
+  
+
+}
+
+
+
+
+
+           
+
+
+
+                /**
+                 * Your drawings need to be inside this function otherwise they will be reset when 
+                 * you resize the browser window and the canvas goes will be cleared.
+                 */
+
+               
+              
+
+
+                bank.addEventListener('load', function() {
+               
+             //     ctx.fillStyle = "green";
+             //   ctx.fillRect(0,0, width,height);
+                
+
+
+  // execute drawImage statements here
+ // ctx.drawImage(bank,width-60, 5,40,40);
+ // ctx.drawImage(menu, 10, 5,40,40);
+ // ctx.drawImage(hissebir, width-190, 65,60,80);
+  //ctx.drawImage(hisseiki, width-100, 65,60,80);
+  //ctx.drawImage(hisseuc, width-190, 170,60,80);
+  //ctx.drawImage(hissedort, width-100, 170,60,80);
+
+ // ctx.drawImage(bm, width-410, height/2+50,25,25);
+  //ctx.drawImage(db, width-100, 10,25,25);
+  //ctx.drawImage(ibm, width-200, 10,25,25);
+  //ctx.drawImage(wosk, width-300, 10,25,25);
+
+
+
+
+  
+              
+
+
+
+
+
+
+
+
+
+
+
+
+   //ctx.drawImage(puandurumu, width/2-y,height/2-x,300,x);
+  
+  // ctx.drawImage(profilresmi, width-width+10,height/2-x,x,x);
+  // ctx.drawImage(profilresmi, width-x-10,height/2-x,x,x);
+
+ // ctx.drawImage(profilresmi, width/2+x/2,height-3*x+x/2,x,x);
+ //ctx.drawImage(profilresmi, width/2+x/2,height-height+40,x,x);
+ // ctx.drawImage(profilresmi, width/2-y,height-height+40,x,x);
+ // ctx.drawImage(profilresmi, width/2-y,height-3*x+x/2,x,x);
+
+// alttakiler kapalı kart resmi alanı
+  //ctx.drawImage(kapalikart, width-width/2+3,height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+ //boşluk
+     //ctx.drawImage(kapalikart, width-width/2-x/parseFloat(1.4),height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+     //ctx.drawImage(kapalikart, width-width/2-2*x/parseFloat(1.4)-3,height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+     //ctx.drawImage(kapalikart, width-width/2-3*x/parseFloat(1.4)-6,height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+     //ctx.drawImage(kapalikart, width-width/2-4*x/parseFloat(1.4)-9,height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+     //ctx.drawImage(kapalikart, width-width/2+x/parseFloat(1.4)+6,height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+     //ctx.drawImage(kapalikart, width-width/2+2*x/parseFloat(1.4)+9,height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+     //ctx.drawImage(kapalikart, width-width/2+3*x/parseFloat(1.4)+12,height-y/parseFloat(1.36)-10,x/parseFloat(1.4),y/parseFloat(1.36));
+ //boşluk
+
+  //ctx.drawImage(kapalikart, width-width/2-x-10,height-y-10,x,y);
+  //ctx.drawImage(kapalikart, width-width/2+x+30,height-y-10,x,y);
+  //ctx.drawImage(kapalikart, width-width+300,height-160,width/parseFloat(13.66),width/parseFloat(9.10));
+ // ctx.drawImage(kapalikart, width-width+400,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+ // ctx.drawImage(kapalikart, width-width+500,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+ // ctx.drawImage(kapalikart, width-width+600,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+ // ctx.drawImage(kapalikart, width-width+700,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+//  ctx.drawImage(kapalikart, width-width+800,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+ // ctx.drawImage(kapalikart, width-width+900,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+//alttakiler acik kart resmi alanı
+//ctx.drawImage(acikkart, width-width+900,height-250,width/parseFloat(17.81),width/parseFloat(13.36));
+
+
+}, false);
+
+                drawStuff(); 
+
+        }
+        resizeCanvas();
+        
+        function drawStuff() {
+                // do your drawing stuff here
+               //bu bloğun üstü
+            
+         // var text ;  
+        // text =document.getElementById('.puanbir').id;
+              // text= document.getElementById('.puanbir').className;
+              // text.style.top=500+"px";
+           
+              
+              //background
+            document.querySelector('.background').style.left= 0+'px';
+            document.querySelector('.background').style.top= 0+'px';
+            document.querySelector('.background').style.width= width+'px';
+            document.querySelector('.background').style.height= height+'px';
+              
+              
+              //kapalıkart
+              document.querySelector('.kapalikartbir').style.left= width-width/2+3+'px';
+              document.querySelector('.kapalikartbir').style.top= height-y/parseFloat(1.36)-10+'px';
+              document.querySelector('.kapalikartbir').style.width= x/parseFloat(1.4)+'px';
+              document.querySelector('.kapalikartbir').style.height= y/parseFloat(1.36)+'px';
+
+           //puandurumu
+           document.querySelector('.puandurumu').style.left= width/2-y+'px';
+          document.querySelector('.puandurumu').style.top= height/2-x+'px';
+          document.querySelector('.puandurumu').style.width= y*2+'px';
+          document.querySelector('.puandurumu').style.height= x-1+'px';
+
+          
+           
+for (var i = 0; i < sirketicoclassnames.length; i++) {
+  let sirketicoleftvalues =[width/2-y, width/2-y+x/parseFloat(1.33),width/2-y+2*x/parseFloat(1.33), width/2-y+3*x/parseFloat(1.33)];
+        
+          document.querySelector(sirketicoclassnames[i]).style.left= sirketicoleftvalues[i]+'px';
+          document.querySelector(sirketicoclassnames[i]).style.top= height/2-x/parseFloat(1.33)+'px';
+          document.querySelector(sirketicoclassnames[i]).style.width= x/parseFloat(1.33)+'px';
+          document.querySelector(sirketicoclassnames[i]).style.height= x/parseFloat(1.33)+'px';
+  
+  };
+
+
+
+
+          
+           
+/*
+          socket.on("updategamedata", function (data) {
+           
+           document.getElementById("money").innerHTML=300;
+ 
+          console.log(data.sirket);
+          for (var i = 0; i < data.sirket.length; i++) {
+            console.log(data.sirket.length);
+           document.getElementById(data.sirket[i]).innerHTML=data.sirket[i]+data.deger[i];   
+           
+           document.querySelector('.puanbir').style.color='black';
+          document.querySelector('.puanbir').style.fontSize=  x/5+'px';
+          document.querySelector('.puanbir').style.fontWeight='bold';
+          document.querySelector('.puanbir').style.left= width/2-y +'px';
+          document.querySelector('.puanbir').style.top= height/2-x+'px';          
+          document.querySelector('.puanbir').style.width= x/parseFloat(1.36)+'px';
+          document.querySelector('.puanbir').style.height= x/parseFloat(4.34)+'px';  
            
            };
-       socket.emit("gamedata", {"kart":true,"deger":sabitdeger});
-       //socket.emit("login", {"isim":name,"yazi":msg,"param":"kaan"});
-       
-          };
-       
-        };
-             
-
-
-
-              // socket.on("message", data => $("#message").append(`<li>${data} odasına bağlanıldı.</li>`));
-               socket.on("message", function (data) {
-               
-           playkey=data.playkey;
-      
-           
-       //      `<li>${data} odasına bağlanıldı.</li>`
-
-           var bolum = document.createElement("p");
-           var icerik = document.createTextNode("id :"+"  "+socket.id + " :"+data.isim)
-           bolum.appendChild(icerik);
+          
+          });
+*/
   
-           document.body.appendChild(bolum);
 
-          // socket.emit("login", {"isim":name,"yazi":msg,"param":"kaan"});
-
-
-               });
-
-
-
-               socket.on("newevent", function (veri) {
-            console.log(veri);
-          console.log(socket.id);
-
-              // alert(data);
-               var bolumm = document.createElement("p");
-           var icerikk = document.createTextNode("verim :"+"  "+ veri.servermes )
-           bolumm.appendChild(icerikk);
-  
-           document.body.appendChild(bolumm);
+for (var i = 0; i < puanclassnames.length; i++) {
+  let puanleftvalues =[width/2-y,width/2-y+x/parseFloat(1.33),width/2-y+2*x/parseFloat(1.33),width/2-y+3*x/parseFloat(1.33)];
         
-     //   alert("bu fonksiyon çalışıyo");
-     //   alert("newid"+" "+clientid+"and"+"stabil id :"+veri.stabilid);
-       //  if(data.id == veri.stabilid){
-         //  alert("newid"+" "+clientid+"and"+"stabil id :"+veri.stabilid);
-        //  alert("yourturn");
-   
-     //    };
-   
-         });
-      
-      
-         socket.on("ozel", function (islem) {
-           alert("özelmesaj geldi");
-          socket.emit("serverclick", {"on":true});
-          if(islem.tikla){   
-             tikla();  
-              } ;
-    
-         });
-         
-         socket.on("updategamedata", function (data) {
-           
-          document.getElementById("money").innerHTML=300;
+           document.querySelector(puanclassnames[i]).style.color='black';
+          document.querySelector(puanclassnames[i]).style.fontSize=  x/5+'px';
+          document.querySelector(puanclassnames[i]).style.fontWeight='bold';
+          document.querySelector(puanclassnames[i]).style.left=puanleftvalues[i]+'px';
+          document.querySelector(puanclassnames[i]).style.top= height/2-x+'px';          
+          document.querySelector(puanclassnames[i]).style.width= x/parseFloat(1.36)+'px';
+          document.querySelector(puanclassnames[i]).style.height= x/parseFloat(4.34)+'px'; 
+    //      document.querySelector(puanclassnames[i]).textContent=i*2; classla div içine yazı yazdırma           
+           };
 
-         console.log(data.sirket);
-         for (var i = 0; i < data.sirket.length; i++) {
-           console.log(data.sirket.length);
-          document.getElementById(data.sirket[i]).innerHTML=data.sirket[i]+data.deger[i];    
+     
+for (var i = 0; i < profilclassnames.length; i++) {
+  let profilleftvalues =[width-width+10, width-x-10,width/2-y,width/2+x/2,width/2-y,width/2+x/2,width/2-x/2,width/2-x/2];
+  let profiltopvalues =[height/2-x, height/2-x,height-height+40,height-height+40,height-3*x+x/2, height-3*x+x/2,height-height+40,height-3*x+x/2];
+
+  let avatarleftvalues =[width-width+10,width-x-10,width/2-y,width/2+x/2,width/2-y,width/2+x/2,width/2-x/2,width/2-x/2];
+  let avatartopvalues =[height/2-x,height/2-x,height-height+40,height-height+40,height-3*x+x/2,height-3*x+x/2,height-height+40,height-3*x+x/2];
+        
+  let isimalanileftvalues =[width-width+10,width-x-10, width/2-y, width/2+x/2, width/2-y, width/2+x/2,width/2-x/2,width/2-x/2];
+  let isimalanitopvalues =[height/2-x/2,height/2-x/2, height-height+40+x/2,height-height+40+x/2,height-3*x+x/2+x/2, height-3*x+x/2+x/2,height-height+40+x/2,height-3*x+x/2+x/2];
+
+            
+  let paramleftvalues =[width-width+10,width-x-10, width/2-y,width/2+x/2,width/2-y,width/2+x/2,width/2-x/2,width/2-x/2];
+  let paramtopvalues =[height/2-y/parseFloat(1.2),height/2-y/parseFloat(1.2), height-height+40-x/4, height-height+40-x/4,height-3*x+x/2-x/4, height-3*x+x/2-x/4,height-height+40-x/4,height-3*x+x/2-x/4];
+
+          //profil
+          document.querySelector(profilclassnames[i]).style.display='none';
+          document.querySelector(profilclassnames[i]).style.left= profilleftvalues[i]+'px';
+          document.querySelector(profilclassnames[i]).style.top= profiltopvalues[i]+'px';
+          document.querySelector(profilclassnames[i]).style.width= x+'px';
+          document.querySelector(profilclassnames[i]).style.height= x+10+'px';
+        
+         // border: 1px solid darkorange;
+          
+            //avatar
+          document.querySelector(avatarclassnames[i]).style.display='none';
+          document.querySelector(avatarclassnames[i]).style.left=avatarleftvalues[i]+'px';
+          document.querySelector(avatarclassnames[i]).style.top= avatartopvalues[i]+'px';
+          document.querySelector(avatarclassnames[i]).style.width= x+'px';
+          document.querySelector(avatarclassnames[i]).style.height= x/2+'px'; 
+
+          
+           //isimalani
+          document.querySelector(isimalaniclassnames[i]).style.display='none';
+          document.querySelector(isimalaniclassnames[i]).style.left=isimalanileftvalues[i]+'px';
+          document.querySelector(isimalaniclassnames[i]).style.top= isimalanitopvalues[i]+'px';
+          document.querySelector(isimalaniclassnames[i]).style.color='black';
+          document.querySelector(isimalaniclassnames[i]).style.fontSize=  x/5+'px';
+          document.querySelector(isimalaniclassnames[i]).style.fontWeight='bold';
+          document.querySelector(isimalaniclassnames[i]).style.width= x+'px';
+          document.querySelector(isimalaniclassnames[i]).style.height= x/5+'px'; 
+
+          
+          //param
+          document.querySelector(paramclassnames[i]).style.display='none';
+          document.querySelector(paramclassnames[i]).style.color='black';
+          document.querySelector(paramclassnames[i]).style.fontSize=  x/5+'px';
+          document.querySelector(paramclassnames[i]).style.fontWeight='bold';
+          document.querySelector(paramclassnames[i]).style.left= paramleftvalues[i]+'px';
+          document.querySelector(paramclassnames[i]).style.top=  paramtopvalues[i]+'px';
+          document.querySelector(paramclassnames[i]).style.width= x+'px';
+          document.querySelector(paramclassnames[i]).style.height= x/5+'px'; 
              
-          };
          
-         });
+
+     };
+
+
+
+    
+
+     
+      
+for (var i = 0; i < sayi.length; i++) {
+  document.querySelector(profilclassnames[sayi[i]]).style.display='block';
+  document.querySelector(avatarclassnames[sayi[i]]).style.display='block';
+  document.querySelector(isimalaniclassnames[sayi[i]]).style.display='block';
+  document.querySelector(isimalaniclassnames[sayi[i]]).textContent=isimler[i];
+  document.querySelector(paramclassnames[sayi[i]]).style.display='block';
+  
+  document.querySelector(profilclassnames[sayi[0]]).style.border="1px solid #000";
+  
+ //alert(sayi[i]);
+ //alert(sayi.length);
+ //alert(isim);
+     };
+ 
+   
+      
+    if(playkey){
+
+      for (var i = 0; i < sayi.length; i++) {
+
+  //document.querySelector(profilclassnames[sayi[i]]).style.border="2px solid #000";
+  
+     };
+ 
+    };
+
+
+
+   
+ 
+     
+
+
+
+
+
+
 
 
      
-         
+           /*
 
-         
+          //profilbir
+          document.querySelector('.profilbir').style.left= width-width+10+'px';
+          document.querySelector('.profilbir').style.top= height/2-x+'px';
+          document.querySelector('.profilbir').style.width= x+'px';
+          document.querySelector('.profilbir').style.height= x+10+'px';
           
-         
+          //profiliki
+           document.querySelector('.profiliki').style.left= width-x-10+'px';
+          document.querySelector('.profiliki').style.top= height/2-x+'px';
+          document.querySelector('.profiliki').style.width= x+'px';
+          document.querySelector('.profiliki').style.height= x+10+'px';
 
+          //profiluc
+          document.querySelector('.profiluc').style.left= width/2-y+'px';
+          document.querySelector('.profiluc').style.top= height-height+40+'px';
+          document.querySelector('.profiluc').style.width= x+'px';
+          document.querySelector('.profiluc').style.height= x+10+'px';
+          //profildort
+          document.querySelector('.profildort').style.left= width/2+x/2+'px';
+          document.querySelector('.profildort').style.top= height-height+40+'px';
+          document.querySelector('.profildort').style.width= x+'px';
+          document.querySelector('.profildort').style.height= x+10+'px';
 
+          //profilbes
+          document.querySelector('.profilbes').style.left= width/2-y+'px';
+          document.querySelector('.profilbes').style.top= height-3*x+x/2+'px';
+          document.querySelector('.profilbes').style.width= x+'px';
+          document.querySelector('.profilbes').style.height= x+10+'px';
+          //profilalti
+          document.querySelector('.profilalti').style.left= width/2+x/2+'px';
+          document.querySelector('.profilalti').style.top= height-3*x+x/2+'px';
+          document.querySelector('.profilalti').style.width= x+'px';
+          document.querySelector('.profilalti').style.height= x+10+'px';
+          
+                    
+            //avatarbir
+          document.querySelector('.avatarbir').style.left= width-width+10+'px';
+          document.querySelector('.avatarbir').style.top= height/2-x+'px';
+          document.querySelector('.avatarbir').style.width= x+'px';
+          document.querySelector('.avatarbir').style.height= x/2+'px'; 
 
-    </script>
+          //avatariki
+         document.querySelector('.avatariki').style.left= width-x-10+'px';
+          document.querySelector('.avatariki').style.top= height/2-x+'px';
+          document.querySelector('.avatariki').style.width= x+'px';
+          document.querySelector('.avatariki').style.height= x/2+'px';
+
+          //avataruc
+          document.querySelector('.avataruc').style.left=width/2-y+'px';
+          document.querySelector('.avataruc').style.top= height-height+40+'px';
+          document.querySelector('.avataruc').style.width= x+'px';
+          document.querySelector('.avataruc').style.height= x/2+'px';
+
+          //avatardort
+          document.querySelector('.avatardort').style.left=width/2+x/2+'px';
+          document.querySelector('.avatardort').style.top= height-height+40+'px';
+          document.querySelector('.avatardort').style.width= x+'px';
+          document.querySelector('.avatardort').style.height= x/2+'px';
+
+          //avatarbes
+          document.querySelector('.avatarbes').style.left=width/2-y+'px';
+          document.querySelector('.avatarbes').style.top= height-3*x+x/2+'px';
+          document.querySelector('.avatarbes').style.width= x+'px';
+          document.querySelector('.avatarbes').style.height= x/2+'px';
+
+          //avataralti
+          document.querySelector('.avataralti').style.left=width/2+x/2+'px';
+          document.querySelector('.avataralti').style.top= height-3*x+x/2+'px';
+          document.querySelector('.avataralti').style.width= x+'px';
+          document.querySelector('.avataralti').style.height= x/2+'px';
+ 
+
+          
+          //isimalanibir
+          
+          document.querySelector('.isimalanibir').style.color='black';
+          document.querySelector('.isimalanibir').style.fontSize=  x/5+'px';
+          document.querySelector('.isimalanibir').style.fontWeight='bold';
+          document.querySelector('.isimalanibir').style.left= width-width+10+'px';
+          document.querySelector('.isimalanibir').style.top= height/2-x/2+'px';
+          document.querySelector('.isimalanibir').style.width= x+'px';
+          document.querySelector('.isimalanibir').style.height= x/5+'px'; 
+      
+          //isimalaniiki
+          
+          document.querySelector('.isimalaniiki').style.color='black';
+          document.querySelector('.isimalaniiki').style.fontSize=  x/5+'px';
+          document.querySelector('.isimalaniiki').style.fontWeight='bold';
+          document.querySelector('.isimalaniiki').style.left= width-x-10+'px';
+          document.querySelector('.isimalaniiki').style.top= height/2-x/2+'px';
+          document.querySelector('.isimalaniiki').style.width= x+'px';
+          document.querySelector('.isimalaniiki').style.height= x/5+'px';
+          
+          //isimalaniuc 
+          document.querySelector('.isimalaniuc').style.color='black';
+          document.querySelector('.isimalaniuc').style.fontSize= x/5+'px';
+          document.querySelector('.isimalaniuc').style.fontWeight='bold';
+          document.querySelector('.isimalaniuc').style.left= width/2-y+'px';
+          document.querySelector('.isimalaniuc').style.top= height-height+40+x/2+'px';
+          document.querySelector('.isimalaniuc').style.width= x+'px';
+          document.querySelector('.isimalaniuc').style.height= x/5+'px';
+      
+          //isimalanidort 
+          document.querySelector('.isimalanidort').style.color='black';
+          document.querySelector('.isimalanidort').style.fontSize= x/5+'px';
+          document.querySelector('.isimalanidort').style.fontWeight='bold';
+          document.querySelector('.isimalanidort').style.left= width/2+x/2+'px';
+          document.querySelector('.isimalanidort').style.top= height-height+40+x/2+'px';
+          document.querySelector('.isimalanidort').style.width= x+'px';
+          document.querySelector('.isimalanidort').style.height= x/5+'px';
+
+          //isimalanibes 
+          document.querySelector('.isimalanibes').style.color='black';
+          document.querySelector('.isimalanibes').style.fontSize= x/5+'px';
+          document.querySelector('.isimalanibes').style.fontWeight='bold';
+          document.querySelector('.isimalanibes').style.left= width/2-y+'px';
+          document.querySelector('.isimalanibes').style.top= height-3*x+x/2+x/2+'px';
+          document.querySelector('.isimalanibes').style.width= x+'px';
+          document.querySelector('.isimalanibes').style.height= x/5+'px';
+          //isimalanialti 
+          document.querySelector('.isimalanialti').style.color='black';
+          document.querySelector('.isimalanialti').style.fontSize= x/5+'px';
+          document.querySelector('.isimalanialti').style.fontWeight='bold';
+          document.querySelector('.isimalanialti').style.left=  width/2+x/2+'px';
+          document.querySelector('.isimalanialti').style.top= height-3*x+x/2+x/2+'px';
+          document.querySelector('.isimalanialti').style.width= x+'px';
+          document.querySelector('.isimalanialti').style.height= x/5+'px';
+        
+           
+
   
+             
+            //parambir
+          document.querySelector('.parambir').style.color='black';
+          document.querySelector('.parambir').style.fontSize=  x/5+'px';
+          document.querySelector('.parambir').style.fontWeight='bold';
+          document.querySelector('.parambir').style.left= width-width+10+'px';
+          document.querySelector('.parambir').style.top= height/2-y/parseFloat(1.2)+'px';
+          document.querySelector('.parambir').style.width= x+'px';
+          document.querySelector('.parambir').style.height= x/5+'px'; 
+          
+            //paramiki
+            document.querySelector('.paramiki').style.color='black';
+          document.querySelector('.paramiki').style.fontSize=  x/5+'px';
+          document.querySelector('.paramiki').style.fontWeight='bold';
+          document.querySelector('.paramiki').style.left= width-x-10+'px';
+          document.querySelector('.paramiki').style.top= height/2-y/parseFloat(1.2)+'px';
+          document.querySelector('.paramiki').style.width= x+'px';
+          document.querySelector('.paramiki').style.height= x/5+'px';  
+
+          //paramuc 
+          document.querySelector('.paramuc').style.color='black';
+          document.querySelector('.paramuc').style.fontSize= x/5+'px';
+          document.querySelector('.paramuc').style.fontWeight='bold';
+          document.querySelector('.paramuc').style.left= width/2-y+'px';
+          document.querySelector('.paramuc').style.top= height-height+40-x/4+'px';
+          document.querySelector('.paramuc').style.width= x+'px';
+          document.querySelector('.paramuc').style.height= x/5+'px';
+
+           //paramdort 
+           document.querySelector('.paramdort').style.color='black';
+          document.querySelector('.paramdort').style.fontSize= x/5+'px';
+          document.querySelector('.paramdort').style.fontWeight='bold';
+          document.querySelector('.paramdort').style.left= width/2+x/2+'px';
+          document.querySelector('.paramdort').style.top= height-height+40-x/4+'px';
+          document.querySelector('.paramdort').style.width= x+'px';
+          document.querySelector('.paramdort').style.height= x/5+'px';
+
+           //parambes 
+          document.querySelector('.parambes').style.color='black';
+          document.querySelector('.parambes').style.fontSize= x/5+'px';
+          document.querySelector('.parambes').style.fontWeight='bold';
+          document.querySelector('.parambes').style.left= width/2-y+'px';
+          document.querySelector('.parambes').style.top=  height-3*x+x/2-x/4+'px';
+          document.querySelector('.parambes').style.width= x+'px';
+          document.querySelector('.parambes').style.height= x/5+'px';
+
+          //paramalti 
+          document.querySelector('.paramalti').style.color='black';
+          document.querySelector('.paramalti').style.fontSize= x/5+'px';
+          document.querySelector('.paramalti').style.fontWeight='bold';
+          document.querySelector('.paramalti').style.left= width/2+x/2+'px';
+          document.querySelector('.paramalti').style.top=  height-3*x+x/2-x/4+'px';
+          document.querySelector('.paramalti').style.width= x+'px';
+          document.querySelector('.paramalti').style.height= x/5+'px';
+       */
    
+        
+
+
+
+
+
+     //bu kod bloğunun en altı  
+
+          
+
+
+
+
+        }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+    // Bundan sonra çizimlerimizi yapabiliriz.
+    myFunction();
+
+    window.addEventListener("resize",myFunction);
+    function myFunction() {
+
+    var tuval = document.getElementById("cnTuval");
+
+
+
+   var width= window.innerWidth-30;
+    
+//alert(width);
+
+     var height=window.innerHeight;
+    
+//alert(height);
+
+tuval.width =width;
+	tuval.height =height;
+  
+  var ctx = tuval.getContext("2d");
+
+
+
+
+
+
+
+
+    
+    // Create new img element
+    var menu = new Image();
+    var kapalikart = new Image();
+    var puandurumu = new Image();
+    var profilresmi = new Image();
+    var hissebir = new Image();
+    var hisseiki = new Image();
+    var hisseuc = new Image();
+    var hissedort = new Image();
+    var acikkart = new Image();
+    var bm = new Image();
+    var db = new Image();
+    var ibm = new Image();
+    var wosk = new Image();
+   
+
+
+  
+
+
+      ctx.fillStyle = "green";
+ctx.fillRect(0,0, width,height);
+
+//Turn transparency on
+ctx.globalAlpha = 0.3;
+ctx.fillStyle = "black"; 
+ctx.fillRect(0,0, width,height/parseFloat(12.58)); 
+ctx.fillStyle = "black"; 
+ctx.fillRect(width-200,58, 190,200); 
+
+
+// ctx.fillRect(width/2-width/6, height/2-width/13 , width/13 , width/13); //canvasın 0,0 konumuna 150px genişlikte, 75px yükseklikte dikdörtgen çizer.
+    
+
+
+
+
+ ctx.globalAlpha = 1;
+      kapalikart.src = 'public/kapalikart.png';
+      acikkart.src = 'public/acikkart.png'; 
+      puandurumu.src = 'public/puandurumu.png';
+      profilresmi.src = 'public/profilresmi.png'; 
+      hissebir.src = 'public/hissebir.png';   
+      hisseiki.src = 'public/hisseiki.png';
+      hisseuc.src = 'public/hisseuc.png';
+      hissedort.src = 'public/hissedort.png';     
+      bm.src = 'public/bm.png';
+      db.src = 'public/db.png';
+      ibm.src = 'public/ibm.png';
+      wosk.src = 'public/wosk.png';                        
+      menu.src = 'public/menu.png';
+      bank.src = 'public/bank.png'; // Set source path
+      bank.addEventListener('load', function() {
+  // execute drawImage statements here
+  ctx.drawImage(bank,width-50, 5,40,40);
+  ctx.drawImage(menu, 10, 5,40,40);
+  ctx.drawImage(hissebir, width-190, 65,60,80);
+  ctx.drawImage(hisseiki, width-100, 65,60,80);
+  ctx.drawImage(hisseuc, width-190, 170,60,80);
+  ctx.drawImage(hissedort, width-100, 170,60,80);
+
+  ctx.drawImage(bm, width-410, height/2+50,25,25);
+  ctx.drawImage(db, width-50, 10,25,25);
+  ctx.drawImage(ibm, width-200, 10,25,25);
+  ctx.drawImage(wosk, width-300, 10,25,25);
+
+
+  ctx.drawImage(puandurumu, width/2-150,height/2-50,300,100);
+  ctx.drawImage(profilresmi, width-410,height/2-50,100,100);
+  ctx.drawImage(profilresmi, width-width +310,height/2-50,100,100);
+  ctx.drawImage(profilresmi, width/2+50,height-220,100,100);
+  ctx.drawImage(profilresmi, width/2+50,height-height+100,100,100);
+  ctx.drawImage(profilresmi, width/2-150,height-height+100,100,100);
+  ctx.drawImage(profilresmi, width/2-150,height-220,100,100);
+
+// alttakiler kapalı kart resmi alanı
+  ctx.drawImage(kapalikart, width-width+10,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+300,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+400,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+500,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+600,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+700,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+800,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+  ctx.drawImage(kapalikart, width-width+900,height-110,width/parseFloat(17.81),width/parseFloat(13.36));
+//alttakiler acik kart resmi alanı
+ctx.drawImage(acikkart, width-width+900,height-250,width/parseFloat(17.81),width/parseFloat(13.36));
+
+
+
+}, false);
+
+*/
+
+
+
+      
+        // Üstteki resmin referansını al.
+       // var resim = document.getElementById("imgKaynak");
+ 
+        // Resmi x=15, y=15 konumuna çiz.
+       
+      
+ 
+
+
+
+    
+ // ctx.fillStyle = "red";  // dolgu rengi tanımlama
+
+ // ctx.fillRect(width/2-width/4,height/2-height/parseFloat(3.8), width/2,height/parseFloat(1.9)); //canvasın 0,0 konumuna 150px genişlikte, 75px yükseklikte dikdörtgen çizer.
+ 
+//  ctx.fillRect(0,0, width,height/8); //canvasın 0,0 konumuna 150px genişlikte, 75px yükseklikte dikdörtgen çizer.
+ //ctx.fillStyle = "rgba(0, 0, 200, 0.5)"; // dolgu rengi tanımlama
+
+ 
+ /*
+ctx.fillStyle = "green";
+ctx.fillRect(0,0, width,height);
+
+//Turn transparency on
+ctx.globalAlpha = 0.3;
+ctx.fillStyle = "black"; 
+ctx.fillRect(0,0, width,height/parseFloat(12.58)); 
+ // ctx.fillRect(width/2-width/6, height/2-width/13 , width/13 , width/13); //canvasın 0,0 konumuna 150px genişlikte, 75px yükseklikte dikdörtgen çizer.
+    
+*/
+ 
+ 
+
+//}
+ 
+</script>
   </body>
 </html>
